@@ -4,6 +4,10 @@ export const appLogos = {
   appLogo: require('../../assets/logos/app_logo.png'),
 };
 
+export const appVideos = {
+  appIntro: require('../../assets/videos/app_intro.mp4'),
+};
+
 export const appImages = {
   splash_bg: require('../../assets/images/splash_bg.png'),
   app_bg: require('../../assets/images/app_bg.png'),

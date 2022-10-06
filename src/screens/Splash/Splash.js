@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Text, Image, StatusBar, ImageBackground} from 'react-native';
+import {Text, Image, ImageBackground} from 'react-native';
 import {appImages, appLogos} from '../../shared/theme/assets';
 import styles from './styles';
 
@@ -10,17 +10,12 @@ const Splash = ({navigation}) => {
 
   const handleAppEntry = async () => {
     setTimeout(() => {
-      // navigation.replace('Walkthrough');
-    }, 2500);
+      navigation.replace('Auth');
+    }, 500);
   };
 
   return (
     <ImageBackground style={styles.rootContainer} source={appImages.splash_bg}>
-      <StatusBar
-        translucent={true}
-        barStyle={'light-content'}
-        backgroundColor={'transparent'}
-      />
       <Image
         resizeMode="contain"
         source={appLogos.appLogo}

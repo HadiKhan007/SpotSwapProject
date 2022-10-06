@@ -1,76 +1,41 @@
-import React from 'react';
-import {View, Text, Image, StatusBar} from 'react-native';
-import AppIntroSlider from 'react-native-app-intro-slider';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import React, {useEffect, useRef, useState} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
+import {useIsFocused} from '@react-navigation/native';
+import Video from 'react-native-video';
+import {appVideos} from '../../shared/exporter';
 import styles from './styles';
-import {Spacer, AppButton} from '../../components';
-import {slidesData} from '../../shared/utilities/constant';
-import {colors} from '../../shared/exporter';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Walkthrough = ({navigation}) => {
-  let slider = AppIntroSlider;
+  const video = useRef(null);
+  const isFocus = useIsFocused();
+  const [pause, setPause] = useState(false);
 
-  const renderItem = ({item, index}) => {
-    return <Image source={item.image} style={styles.bgImgStyle(index)} />;
-  };
-
-  const keyExtractor = item => item.title;
+  useEffect(() => {
+    if (!isFocus) {
+      setPause(true);
+    }
+  }, [!isFocus]);
 
   return (
     <View style={styles.rootContainer}>
-      <StatusBar
-        translucent={true}
-        barStyle={'light-content'}
-        backgroundColor={'transparent'}
+      <Video
+        ref={video}
+        repeat={true}
+        source={appVideos.appIntro}
+        resizeMode="contain"
+        style={styles.videoStyle}
+        paused={pause}
+        playInBackground={false}
+        ignoreSilentSwitch={'obey'}
       />
-      <View style={{flex: 1}}>
-        <AppIntroSlider
-          data={slidesData}
-          ref={slider}
-          renderItem={renderItem}
-          keyExtractor={keyExtractor}
-          dotStyle={styles.dotStyle}
-          showSkipButton={false}
-          showNextButton={false}
-          showDoneButton={false}
-          activeDotStyle={styles.activeDotStyle}
-        />
-        <View style={styles.contentContainer}>
-          <KeyboardAwareScrollView
-            contentContainerStyle={styles.scrollViewStyle}
-            showsVerticalScrollIndicator={false}>
-            <Text style={styles.titleTextStyle}>
-              Matching Sellers &{'\n'}Buyers
-            </Text>
-            <Text style={styles.descTextStyle}>
-              Schedule your match in just a few clicks
-            </Text>
-            <Spacer androidVal={54} iOSVal={54} />
-            <AppButton
-              shadowColor={colors.btn_shadow}
-              title="Get Started"
-              onPress={() => {
-                AsyncStorage.setItem('walkthrough', 'true').then(res => {
-                  navigation.replace('Auth');
-                });
-              }}
-            />
-            <Text style={styles.haveAccTxtStyle}>
-              If you have an account,{' '}
-              <Text
-                style={styles.underlineTxtStyle}
-                onPress={() => {
-                  AsyncStorage.setItem('walkthrough', 'true').then(res => {
-                    navigation.replace('Auth');
-                  });
-                }}>
-                Sign in
-              </Text>
-            </Text>
-          </KeyboardAwareScrollView>
-        </View>
-      </View>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        onPress={() => {
+          navigation?.replace('Auth');
+        }}
+        style={styles.buttonCircle}>
+        <Text style={styles.skipTxtStyle}>Skip</Text>
+      </TouchableOpacity>
     </View>
   );
 };

@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
-import {LogBox} from 'react-native';
+import {LogBox, StatusBar} from 'react-native';
 import MainNavigation from './src/navigation';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/lib/integration/react';
 import store, {persistor} from './src/redux/store';
-import {setupAxios, stripe_publishableKey} from './src/shared/exporter';
+import {colors, setupAxios, stripe_publishableKey} from './src/shared/exporter';
 // import {StripeProvider} from '@stripe/stripe-react-native';
 // import {GoogleSignin} from '@react-native-google-signin/google-signin';
 // import {Settings} from 'react-native-fbsdk-next';
@@ -31,6 +31,11 @@ const App = () => {
 
   return (
     <Provider store={store}>
+      <StatusBar
+        translucent={true}
+        barStyle={'light-content'}
+        backgroundColor={'transparent'}
+      />
       {/* <StripeProvider publishableKey={stripe_publishableKey}> */}
       <PersistGate persistor={persistor}>
         <MainNavigation />

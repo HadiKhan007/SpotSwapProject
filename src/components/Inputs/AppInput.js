@@ -1,98 +1,92 @@
 import * as React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
-import {Input, IconProps, Icon} from 'react-native-elements';
-import {useStore} from 'react-redux';
-import {family, size, colors, WP} from '../../shared/exporter';
+import {Text, View, TextInput, StyleSheet} from 'react-native';
+import {Icon} from 'react-native-elements';
+import {
+  family,
+  size,
+  colors,
+  WP,
+  platformOrientedCode,
+} from '../../shared/exporter';
 
 const AppInput = ({
-  placeholder,
-  placeholderTextColor,
-  lable,
-  leftIcon,
-  rightIcon,
-  secureTextEntry,
-  renderErrorMessage,
-  errorMessage,
-  onChangeText,
-  disableFullscreenUI,
-  autoCapitalize,
-  touched,
-  blurOnSubmit,
-  onBlur,
-  value,
-  onSubmitEditing,
-  editable,
   title,
+  capitalize,
+  placeholder,
+  onChangeText,
   keyboardType,
-  maxLength,
+  bottom = WP('7'),
+  rightIcon = false,
+  secureTextEntry = false,
+  phTextColor = colors.g2,
 }) => {
   const [showPass, setShowPass] = React.useState(secureTextEntry);
 
   return (
-    <View style={styles.container}>
-      {title && <Text style={styles.textStyle}>{title}</Text>}
-
-      <Input
-        placeholder={placeholder}
-        placeholderTextColor={placeholderTextColor}
-        secureTextEntry={showPass}
-        inputContainerStyle={styles.inputContainerStyle}
-        inputStyle={styles.inputStyle}
-        leftIcon={leftIcon}
-        onChangeText={onChangeText}
-        onBlur={onBlur}
-        value={value}
-        disableFullscreenUI={disableFullscreenUI}
-        autoCapitalize={autoCapitalize}
-        blurOnSubmit={blurOnSubmit}
-        editable={editable}
-        keyboardType={keyboardType}
-        rightIcon={
-          secureTextEntry ? (
+    <>
+      {title && <Text style={styles.labelTxtStyle}>{title}</Text>}
+      <View style={styles.inputContainer(bottom)}>
+        <TextInput
+          placeholder={placeholder}
+          selectionColor={colors.s4}
+          secureTextEntry={showPass}
+          onChangeText={onChangeText}
+          keyboardType={keyboardType}
+          autoCapitalize={capitalize}
+          placeholderTextColor={phTextColor}
+          style={styles.inputStyle(rightIcon)}
+        />
+        {rightIcon && (
+          <View style={styles.iconContainer}>
             <Icon
-              onPress={() => {
-                setShowPass(!showPass);
-              }}
-              name={showPass ? 'eye-with-line' : 'eye'}
-              type={'entypo'}
-              size={22}
-              color={colors.g6}
-              tvParallaxProperties={undefined}
+              name={showPass ? 'eye-off' : 'eye'}
+              type={'feather'}
+              size={18}
+              color={colors.g2}
+              onPress={() => setShowPass(!showPass)}
             />
-          ) : (
-            rightIcon
-          )
-        }
-        errorMessage={touched && errorMessage}
-        renderErrorMessage={renderErrorMessage}
-        autoCompleteType={undefined}
-        onSubmitEditing={onSubmitEditing}
-        maxLength={maxLength}
-      />
-    </View>
+          </View>
+        )}
+      </View>
+    </>
   );
 };
 
 export {AppInput};
 
 const styles = StyleSheet.create({
-  container: {},
-  inputStyle: {
-    fontFamily: family.Gilroy_Medium,
+  labelTxtStyle: {
+    color: colors.g2,
     fontSize: size.tiny,
-    borderBottomWidth: 0,
-    color: colors.b1,
+    paddingBottom: WP('3'),
+    fontFamily: family.SFProText_Regular,
   },
-  inputContainerStyle: {
-    borderRadius: 24,
-    backgroundColor: colors.g5,
-    borderBottomWidth: 0,
-    paddingHorizontal: WP('3'),
+  inputContainer: bottom => {
+    return {
+      width: '100%',
+      borderWidth: 1,
+      borderRadius: 10,
+      flexDirection: 'row',
+      marginBottom: bottom,
+      borderColor: colors.s3,
+      backgroundColor: colors.t1,
+      paddingHorizontal: WP('3.2'),
+      height: platformOrientedCode(55, 55),
+    };
   },
-  textStyle: {
-    paddingHorizontal: WP('3'),
-    marginBottom: 10,
-    color: colors.b1,
-    fontFamily: family.Gilroy_Medium,
+  inputStyle: rightIcon => {
+    return {
+      color: colors.white,
+      fontSize: size.normal,
+      width: rightIcon ? '90%' : '100%',
+      bottom: platformOrientedCode(0, 1),
+      height: platformOrientedCode(55, 55),
+    };
+  },
+  iconContainer: {
+    width: '10%',
+    left: WP('1.5'),
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
