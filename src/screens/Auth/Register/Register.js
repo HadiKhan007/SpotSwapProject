@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import {
   Text,
   View,
@@ -12,36 +12,48 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {
   WP,
   colors,
-  LoginVS,
   appIcons,
   appLogos,
   appImages,
-  loginFormFields,
+  registerVS,
+  registerFormFields,
   platformOrientedCode,
 } from '../../../shared/exporter';
 import {Spacer, AppInput, AppButton} from '../../../components';
 import styles from './styles';
 
-const Login = ({navigation}) => {
+const Register = ({navigation}) => {
   const formikRef = useRef();
+  const [country, setcountry] = useState(null);
+  const [cca2, setcca2] = useState('US');
+  const [countryCode, setCountryCode] = useState('1');
+  const [showCountryPicker, setshowCountryPicker] = useState(false);
 
-  const handleLogin = values => {
+  const handleRegister = values => {
     formikRef.current?.resetForm();
+    navigation.navigate('AddCarInfo');
   };
 
   const handleGoogleLogin = () => {};
   const handleFBLogin = () => {};
   const handleAppleLogin = () => {};
 
+  const setCountryValue = val => {
+    setCountryCode(val.callingCode[0]);
+    setcca2(val.cca2);
+    setcountry(val);
+    setshowCountryPicker(false);
+  };
+
   return (
     <ImageBackground style={styles.rootContainer} source={appImages.app_bg}>
       <Formik
         innerRef={formikRef}
-        initialValues={loginFormFields}
+        initialValues={registerFormFields}
         onSubmit={values => {
-          handleLogin(values);
+          handleRegister(values);
         }}
-        validationSchema={LoginVS}>
+        validationSchema={registerVS}>
         {({
           values,
           errors,
@@ -53,15 +65,29 @@ const Login = ({navigation}) => {
           <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
             <Text
               style={styles.regTxtStyle}
-              onPress={() => navigation.navigate('AddCarPics')}>
-              Register
+              onPress={() => navigation.navigate('Login')}>
+              Sign In
             </Text>
             <Image
               resizeMode="contain"
               source={appLogos.appLogo}
               style={styles.logoStyle}
             />
-            <Spacer androidVal={WP('17.5')} iOSVal={WP('17.5')} />
+            <Spacer androidVal={WP('11')} iOSVal={WP('11')} />
+            <AppInput
+              renderErrorMessage
+              disableFullscreenUI
+              value={values.name}
+              blurOnSubmit={false}
+              touched={touched.name}
+              title="Enter your name"
+              errorMessage={errors.name}
+              placeholder="Enter your name"
+              placeholderTextColor={colors.g2}
+              onChangeText={handleChange('name')}
+              onBlur={() => setFieldTouched('name')}
+            />
+            <Spacer androidVal={WP('3')} iOSVal={WP('3')} />
             <AppInput
               renderErrorMessage
               disableFullscreenUI
@@ -78,6 +104,33 @@ const Login = ({navigation}) => {
             />
             <Spacer androidVal={WP('3')} iOSVal={WP('3')} />
             <AppInput
+              leftIcon
+              cca2={cca2}
+              countryInput
+              renderErrorMessage
+              disableFullscreenUI
+              blurOnSubmit={false}
+              autoCapitalize="none"
+              value={values.number}
+              touched={touched.number}
+              keyboardType={'phone-pad'}
+              title={'Enter phone number'}
+              placeholder={'000 0000 000'}
+              errorMessage={errors.number}
+              onChangeText={handleChange('number')}
+              onBlur={() => setFieldTouched('number')}
+              onSelect={val => {
+                setCountryValue(val);
+              }}
+              countryCode={countryCode}
+              country={country}
+              onPressCountryPicker={() => {
+                setshowCountryPicker(true);
+              }}
+              countryPicker={showCountryPicker}
+            />
+            <Spacer androidVal={WP('3')} iOSVal={WP('3')} />
+            <AppInput
               secureTextEntry
               bottom={WP('3')}
               renderErrorMessage
@@ -85,12 +138,12 @@ const Login = ({navigation}) => {
               blurOnSubmit={false}
               value={values.password}
               touched={touched.password}
-              title="Enter your password"
+              title="Enter password"
               keyboardType="email-address"
               errorMessage={errors.password}
               onSubmitEditing={handleSubmit}
               placeholderTextColor={colors.g2}
-              placeholder="Enter your password"
+              placeholder="Enter password"
               onChangeText={handleChange('password')}
               onBlur={() => setFieldTouched('password')}
               rightIcon={
@@ -102,15 +155,34 @@ const Login = ({navigation}) => {
                 />
               }
             />
-            <TouchableOpacity activeOpacity={0.7} onPress={() => {}}>
-              <Text
-                style={styles.forgotTxtStyle}
-                onPress={() => navigation.navigate('ForgotPassword')}>
-                forgot your password
-              </Text>
-            </TouchableOpacity>
-            <Spacer androidVal={WP('11')} iOSVal={WP('11')} />
-            <AppButton title="Login" onPress={() => handleSubmit()} />
+            <Spacer androidVal={WP('3')} iOSVal={WP('3')} />
+            <AppInput
+              secureTextEntry
+              bottom={WP('3')}
+              renderErrorMessage
+              disableFullscreenUI
+              blurOnSubmit={false}
+              title="Confirm password"
+              value={values.confirmPassword}
+              touched={touched.confirmPassword}
+              keyboardType="email-address"
+              errorMessage={errors.confirmPassword}
+              onSubmitEditing={handleSubmit}
+              placeholderTextColor={colors.g2}
+              placeholder="Confirm password"
+              onChangeText={handleChange('confirmPassword')}
+              onBlur={() => setFieldTouched('confirmPassword')}
+              rightIcon={
+                <Icon
+                  name={'eye'}
+                  type={'feather'}
+                  size={18}
+                  color={colors.g20}
+                />
+              }
+            />
+            <Spacer androidVal={WP('9')} iOSVal={WP('9')} />
+            <AppButton title="Create Account" onPress={() => handleSubmit()} />
             <Spacer androidVal={WP('11')} iOSVal={WP('11')} />
             <View style={styles.orViewContainer}>
               <View style={styles.lineView} />
@@ -161,4 +233,4 @@ const Login = ({navigation}) => {
   );
 };
 
-export default Login;
+export default Register;

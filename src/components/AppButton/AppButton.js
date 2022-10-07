@@ -6,9 +6,10 @@ import {
   colors,
   family,
   platformOrientedCode,
+  WP,
 } from '../../shared/exporter';
 
-const AppButton = ({title, onPress, width = '100%'}) => {
+const AppButton = ({title, onPress, width = WP('60')}) => {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <LinearGradient

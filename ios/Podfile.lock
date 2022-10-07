@@ -296,6 +296,9 @@ PODS:
     - RCTTypeSafety
     - React-Core
     - ReactCommon/turbomodule/core
+  - react-native-simple-toast (1.1.4):
+    - React-Core
+    - Toast (~> 4.0.0)
   - react-native-video (5.2.1):
     - React-Core
     - react-native-video/Video (= 5.2.1)
@@ -388,6 +391,7 @@ PODS:
   - RNVectorIcons (9.2.0):
     - React-Core
   - SocketRocket (0.6.0)
+  - Toast (4.0.0)
   - TOCropViewController (2.6.1)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -441,6 +445,7 @@ DEPENDENCIES:
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-render-html (from `../node_modules/react-native-render-html`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - react-native-simple-toast (from `../node_modules/react-native-simple-toast`)
   - react-native-video (from `../node_modules/react-native-video`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -478,6 +483,7 @@ SPEC REPOS:
     - libevent
     - OpenSSL-Universal
     - SocketRocket
+    - Toast
     - TOCropViewController
     - YogaKit
 
@@ -528,6 +534,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-render-html"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
+  react-native-simple-toast:
+    :path: "../node_modules/react-native-simple-toast"
   react-native-video:
     :path: "../node_modules/react-native-video"
   React-perflogger:
@@ -606,6 +614,7 @@ SPEC CHECKSUMS:
   react-native-netinfo: b514dd6d9cd512b90e178c5b7158df1a1c568d47
   react-native-render-html: 984dfe2294163d04bf5fe25d7c9f122e60e05ebe
   react-native-safe-area-context: 99b24a0c5acd0d5dcac2b1a7f18c49ea317be99a
+  react-native-simple-toast: 8ee5d23f0b92b935ab7434cdb65159ce12dfb4b7
   react-native-video: c26780b224543c62d5e1b2a7244a5cd1b50e8253
   React-perflogger: 1fb1ad5333b43a5137afd7608695f7a42c5efd27
   React-RCTActionSheet: a435bd67689433575a1e5d7614b021d2c17f0726
@@ -626,6 +635,7 @@ SPEC CHECKSUMS:
   RNSVG: 07037623c36f12e41312730622d5f6b3656227ca
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
+  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
   Yoga: 75bf4b0131cfb46a659cd0c13309b79a6fcff66d
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a

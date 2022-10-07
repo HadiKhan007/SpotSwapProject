@@ -2,6 +2,7 @@ export const colors = {
   // Primary Color
   p1: '#2189E1',
   p2: '#096ABC',
+  p3: '#50AFFF80',
 
   // Secondary Color
   s1: '#FA515B',
@@ -20,6 +21,7 @@ export const colors = {
 
   //White colors
   white: '#ffffff',
+  w1: '#ffffff80',
 
   // rgba colors
   t1: 'rgba(255, 255, 255, 0.2)',

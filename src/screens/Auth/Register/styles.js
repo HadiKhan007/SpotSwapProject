@@ -27,14 +27,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: WP('6.5'),
   },
-  forgotTxtStyle: {
-    right: WP('1'),
-    color: colors.g2,
-    textAlign: 'right',
-    marginTop: WP('1'),
-    fontSize: size.xsmall,
-    fontFamily: family.SFProText_Regular,
-  },
   orViewContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -68,7 +60,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   descTxtStyle: {
-    bottom: WP('2'),
+    bottom: WP('5'),
     color: colors.g4,
     textAlign: 'center',
     fontSize: size.xsmall,

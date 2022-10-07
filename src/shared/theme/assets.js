@@ -9,8 +9,9 @@ export const appVideos = {
 };
 
 export const appImages = {
-  splash_bg: require('../../assets/images/splash_bg.png'),
+  car: require('../../assets/images/car.png'),
   app_bg: require('../../assets/images/app_bg.png'),
+  splash_bg: require('../../assets/images/splash_bg.png'),
 };
 
 export const appIcons = {
