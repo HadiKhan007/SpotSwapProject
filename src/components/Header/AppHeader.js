@@ -1,39 +1,31 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
-import {useNavigation} from '@react-navigation/core';
-import {
-  WP,
-  size,
-  colors,
-  family,
-  appLogos,
-  appImages,
-  profile_uri,
-} from '../../shared/exporter';
-import {MyStatusBar} from '..';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {Icon} from 'react-native-elements';
+import {WP, size, colors, family} from '../../shared/exporter';
 
-export const AppHeader = ({rightIcon = false, onPressIcon, img}) => {
-  const navigation = useNavigation();
+export const AppHeader = ({rightIcon = false, onBackPress, title = ''}) => {
   return (
     <>
-      <MyStatusBar />
       <View style={styles.mainContainer}>
-        <View style={styles.rowContainer}>
-          <Image
-            resizeMode="contain"
-            source={appLogos.appLogo}
-            style={styles.logoIconStyle}
-          />
-          <Text style={styles.logoTxtStyle}>Housibly</Text>
-        </View>
-        {rightIcon && (
-          <TouchableOpacity activeOpacity={0.7} onPress={onPressIcon}>
-            <Image
-              resizeMode="contain"
-              source={{uri: img}}
-              style={styles.personImgStyle}
+        <Icon
+          type={'ionicon'}
+          name={'arrow-back'}
+          size={24}
+          color={colors.white}
+          onPress={onBackPress}
+        />
+        <Text style={styles.txtStyle}>{title}</Text>
+        {rightIcon ? (
+          <TouchableOpacity activeOpacity={0.7} onPress={onBackPress}>
+            <Icon
+              type={'ionicon'}
+              name={'arrow-back'}
+              size={24}
+              color={colors.white}
             />
           </TouchableOpacity>
+        ) : (
+          <Text style={styles.dummyTxtColor}>spots</Text>
         )}
       </View>
     </>
@@ -45,29 +37,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: WP('1.5'),
-    paddingHorizontal: WP('3.85'),
+    backgroundColor: 'transparent',
     justifyContent: 'space-between',
-    backgroundColor: colors.white,
   },
-  rowContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  logoIconStyle: {
-    width: WP('6.4'),
-    height: WP('6'),
-  },
-  logoTxtStyle: {
+  txtStyle: {
     left: WP('2.3'),
-    color: colors.b1,
+    color: colors.white,
     fontSize: size.xxlarge,
-    fontFamily: family.Gilroy_Bold,
+    fontFamily: family.SFProText_SemiBold,
   },
-  personImgStyle: {
-    width: 44,
-    height: 44,
-    borderRadius: 8,
-    backgroundColor: colors.g1,
-    resizeMode: 'cover',
+  dummyTxtColor: {
+    color: 'transparent',
   },
 });

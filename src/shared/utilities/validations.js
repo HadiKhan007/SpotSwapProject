@@ -82,8 +82,8 @@ export const registerVS = yup.object().shape({
 });
 
 export const carInfoVS = yup.object().shape({
-  brand: yup.string().required('Brand Required').label('brand'),
-  model: yup.string().required('Model Required').label('model'),
+  brand: yup.object().shape().required('Brand Required'),
+  model: yup.object().shape().required('Model Required'),
   length: yup
     .number()
     .typeError('Invalid contact number')

@@ -11,8 +11,8 @@ import VerificationSent from '../../screens/Auth/VerificationSent';
 import VerifyOTP from '../../screens/Auth/VerifyOTP';
 import ResetPassword from '../../screens/Auth/ResetPassword';
 import PasswordUpdated from '../../screens/Auth/PasswordUpdated';
-// import PrivacyPolicy from '../../screens/Auth/PrivacyPolicy';
-// import TermsConditions from '../../screens/Auth/TermsConditions';
+import PrivacyPolicy from '../../screens/Auth/PrivacyPolicy';
+import TermsConditions from '../../screens/Auth/TermsConditions';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,8 +31,8 @@ function AuthStack(props) {
       <Stack.Screen name="VerifyOTP" component={VerifyOTP} />
       <Stack.Screen name="ResetPassword" component={ResetPassword} />
       <Stack.Screen name="PasswordUpdated" component={PasswordUpdated} />
-      {/* <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
-      <Stack.Screen name="TermsConditions" component={TermsConditions} /> */}
+      <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
+      <Stack.Screen name="TermsConditions" component={TermsConditions} />
     </Stack.Navigator>
   );
 }

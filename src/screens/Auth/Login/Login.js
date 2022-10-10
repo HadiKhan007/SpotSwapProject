@@ -27,6 +27,7 @@ const Login = ({navigation}) => {
 
   const handleLogin = values => {
     formikRef.current?.resetForm();
+    navigation.navigate('App');
   };
 
   const handleGoogleLogin = () => {};
@@ -53,7 +54,7 @@ const Login = ({navigation}) => {
           <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
             <Text
               style={styles.regTxtStyle}
-              onPress={() => navigation.navigate('AddCarPics')}>
+              onPress={() => navigation.navigate('App')}>
               Register
             </Text>
             <Image
@@ -71,7 +72,7 @@ const Login = ({navigation}) => {
               title="Enter your email"
               errorMessage={errors.email}
               keyboardType="email-address"
-              placeholder="lilacmc@gmail.com"
+              placeholder="Enter your email"
               placeholderTextColor={colors.g2}
               onChangeText={handleChange('email')}
               onBlur={() => setFieldTouched('email')}
@@ -150,8 +151,13 @@ const Login = ({navigation}) => {
             <Spacer androidVal={WP('21')} iOSVal={WP('21')} />
             <Text style={styles.descTxtStyle}>
               By signing in you agree to our{' '}
-              <Text onPress={() => {}}>Terms & Condition</Text>
-              {'\n'}and <Text onPress={() => {}}>Privacy Policy</Text>
+              <Text onPress={() => navigation.navigate('TermsConditions')}>
+                Terms & Condition
+              </Text>
+              {'\n'}and{' '}
+              <Text onPress={() => navigation.navigate('PrivacyPolicy')}>
+                Privacy Policy{' '}
+              </Text>
               Conditions.
             </Text>
           </KeyboardAwareScrollView>

@@ -1,45 +1,28 @@
-import React, {useState, useEffect} from 'react';
-import {Text, View, Alert, ScrollView, SafeAreaView} from 'react-native';
-import {
-  Spacer,
-  AppHeader,
-  AppLoader,
-  BackHeader,
-  MyStatusBar,
-} from '../../../components';
+import React from 'react';
+import {View, Text, ScrollView, ImageBackground} from 'react-native';
+import {AppHeader} from '../../../components';
 import RenderHtml from 'react-native-render-html';
-import {
-  WP,
-  scrWidth,
-  networkText,
-  checkConnected,
-} from '../../../shared/exporter';
+import {appImages, scrWidth} from '../../../shared/exporter';
 import styles from './styles';
 
-const PrivacyPolicy = () => {
-  const [loading, setLoading] = useState(false);
-  const [privacyPolicy, setPrivacyPolicy] = useState('');
+const source = {
+  html: `
+<p style='text-align:center;'>
+  Hello World!
+</p>`,
+};
 
+const PrivacyPolicy = ({navigation}) => {
   return (
-    <SafeAreaView style={styles.rootContainer}>
-      <AppLoader loading={loading} />
-      <MyStatusBar />
-      <AppHeader />
-      <Spacer androidVal={WP('4')} iOSVal={WP('4')} />
-      <BackHeader title="Privacy Policy" />
+    <ImageBackground style={styles.rootContainer} source={appImages.app_bg}>
+      <AppHeader onBackPress={() => navigation.goBack()} />
       <ScrollView showsVerticalScrollIndicator={false}>
+        <Text style={styles.titleTxtStyle}>Privacy Policy</Text>
         <View style={styles.contentContainer}>
-          {/* {privacyPolicy === '' ? (
-            <Text style={styles.txtStyle} />
-          ) : (
-            <RenderHtml
-              contentWidth={scrWidth}
-              source={{html: privacyPolicy}}
-            />
-          )} */}
+          <RenderHtml contentWidth={scrWidth} source={source} />
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </ImageBackground>
   );
 };
 

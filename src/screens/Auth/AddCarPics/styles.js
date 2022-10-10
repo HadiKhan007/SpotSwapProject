@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     marginTop: WP('3'),
   },
   uploadTxtStyle: {
+    marginBottom: 7,
     color: colors.g2,
     marginTop: WP('6'),
     fontSize: size.tiny,
@@ -42,8 +43,28 @@ const styles = StyleSheet.create({
   bottomView: {
     bottom: 16,
     width: '100%',
-    alignItems: 'center',
+    alignSelf: 'center',
     position: 'absolute',
+  },
+  pickImgViewStyle: {
+    flex: 0.5,
+    borderWidth: 1,
+    height: WP('31'),
+    borderRadius: 10,
+    marginBottom: 10,
+    alignItems: 'center',
+    borderStyle: 'dashed',
+    borderColor: colors.p4,
+    justifyContent: 'center',
+  },
+  itemImgStyle: {
+    flex: 0.5,
+    height: WP('31'),
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  spaceView: {
+    width: 10,
   },
 });
 

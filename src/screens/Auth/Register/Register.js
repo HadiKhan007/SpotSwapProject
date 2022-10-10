@@ -97,7 +97,7 @@ const Register = ({navigation}) => {
               title="Enter your email"
               errorMessage={errors.email}
               keyboardType="email-address"
-              placeholder="lilacmc@gmail.com"
+              placeholder="Enter your email"
               placeholderTextColor={colors.g2}
               onChangeText={handleChange('email')}
               onBlur={() => setFieldTouched('email')}
@@ -223,7 +223,7 @@ const Register = ({navigation}) => {
             <Text style={styles.descTxtStyle}>
               By signing in you agree to our{' '}
               <Text onPress={() => {}}>Terms & Condition</Text>
-              {'\n'}and <Text onPress={() => {}}>Privacy Policy</Text>
+              {'\n'}and <Text onPress={() => {}}>Privacy Policy </Text>
               Conditions.
             </Text>
           </KeyboardAwareScrollView>

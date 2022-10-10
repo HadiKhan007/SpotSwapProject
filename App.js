@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React, {useEffect} from 'react';
 import {LogBox, StatusBar} from 'react-native';
 import MainNavigation from './src/navigation';
