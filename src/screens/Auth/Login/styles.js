@@ -1,62 +1,78 @@
 import {StyleSheet} from 'react-native';
-import {WP, colors, size, family} from '../../../shared/exporter';
+import {
+  WP,
+  size,
+  colors,
+  family,
+  StatusBarHeight,
+} from '../../../shared/exporter';
 
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.b1,
+    paddingHorizontal: WP('5'),
+    paddingTop: StatusBarHeight,
   },
-  contentContainer: {
-    paddingHorizontal: WP('3.85'),
-    flex: 1,
+  regTxtStyle: {
+    marginTop: WP('5'),
+    textAlign: 'right',
+    color: colors.white,
+    fontSize: size.normal,
+    fontFamily: family.SFProText_Regular,
   },
-  imageCon: {
-    height: WP('60'),
-    width: '100%',
+  logoStyle: {
+    height: WP('22'),
+    width: WP('51.5'),
+    alignSelf: 'center',
+    marginTop: WP('6.5'),
+  },
+  forgotTxtStyle: {
+    right: WP('1'),
+    color: colors.g2,
+    textAlign: 'right',
+    marginTop: WP('1'),
+    fontSize: size.xsmall,
+    fontFamily: family.SFProText_Regular,
+  },
+  orViewContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  lineView: {
+    height: 1,
+    width: WP('38'),
+    backgroundColor: colors.g3,
+  },
+  orTxtStyle: {
+    color: colors.g3,
+    textAlign: 'right',
+    fontSize: size.xsmall,
+    fontFamily: family.SFProText_Regular,
+  },
+  iconContainer: {
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  imgStyle: {
-    height: '50%',
-    width: '35%',
-    resizeMode: 'contain',
+  iconStyle: {
+    width: WP('9'),
+    height: WP('9'),
+    marginHorizontal: 5,
   },
-  textStyle: {
-    fontSize: size.h4,
-    color: colors.b1,
-    fontFamily: family.Gilroy_Bold,
+  bottomView: {
+    bottom: WP('12'),
+    alignSelf: 'center',
+    position: 'absolute',
+    justifyContent: 'center',
   },
-  googleStyle: {
-    height: 20,
-    width: 20,
-    resizeMode: 'contain',
-  },
-  appleStyle: {
-    height: 20,
-    width: 16,
-    resizeMode: 'contain',
-  },
-  btnTextStyle: {
-    fontSize: size.tiny,
-    fontFamily: family.Gilroy_Medium,
-    color: colors.g3,
-  },
-  forgotText: {
-    color: colors.r1,
-    fontFamily: family.Gilroy_Medium,
-    fontSize: size.tiny,
-    marginBottom: 20,
-  },
-  footerText: {
+  descTxtStyle: {
+    bottom: WP('2'),
+    color: colors.g4,
     textAlign: 'center',
-    color: colors.b1,
-    fontFamily: family.Gilroy_Medium,
-    fontSize: size.tiny,
-    width: '70%',
-  },
-  btnCon: {
-    width: '100%',
-    marginVertical: 20,
+    fontSize: size.xsmall,
+    fontFamily: family.SFProText_Regular,
   },
 });
 

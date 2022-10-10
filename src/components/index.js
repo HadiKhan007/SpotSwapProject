@@ -1,5 +1,6 @@
 //Header
 export * from './Header/AppHeader';
+export * from './Header/HomeHeader';
 
 //Button
 export * from './AppButton/AppButton';
@@ -15,12 +16,13 @@ export * from './Inputs/AppInput';
 
 //Modals
 export * from './Modal/DeleteModal';
+export * from './Modal/ImagePickerModal';
 
 //TextFields
 export * from './TextFields/ProfileField';
 
-//Fields
-export * from './Fields/BlankField';
+//Pickers
+export * from './Picker/DropdownPicker';
 
 // Conversation
 export * from './Hooks/useActionCable';

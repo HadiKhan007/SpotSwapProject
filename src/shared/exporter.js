@@ -1,4 +1,10 @@
-export {appImages, appIcons, appLogos, appSvgs} from './theme/assets';
+export {
+  appSvgs,
+  appIcons,
+  appLogos,
+  appVideos,
+  appImages,
+} from './theme/assets';
 
 export {colors} from './theme/colors';
 export {size} from './theme/sizes';
@@ -14,30 +20,14 @@ export {
 export {
   LoginVS,
   loginFormFields,
-  forgotFormFields,
-  ForgotPasswordVS,
-  resetFormFields,
-  ResetPasswordVS,
-  updateFormFields,
-  PhoneAuthFieldsVS,
-  PhoneAuthFields,
-  signupFormFields,
-  SignupVS,
-  AddPersonalInfoField,
-  AddPersonalInfoVS,
-  codeFormFields,
-  CodeVS,
-  editFormFields,
-  editProfileFieldsVS,
-  addCardFormFields,
-  addCardVS,
-  AddSupportInfoField,
-  AddSupportInfoVS,
-  BudgetBoost,
-  editSupportFormFields,
-  editSupportProfileFieldsVS,
-  socialSignupFormFields,
-  SocialLoginSignupVS,
+  registerVS,
+  registerFormFields,
+  sendMailVS,
+  sendMailFormFields,
+  resetPassVS,
+  resetPassFormFields,
+  carInfoVS,
+  carInfoFormFields,
 } from './utilities/validations';
 export {
   StatusBarHeight,

@@ -1,4 +1,4 @@
-import {appIcons, appImages} from '../theme/assets';
+import {appIcons} from '../theme/assets';
 
 const web_client_id =
   '396667718237-b5871eer19sabub7jg8qhneksq75d443.apps.googleusercontent.com';
@@ -15,79 +15,115 @@ const image_options = {
 
 const networkText = 'Check Internet Connection';
 
-const slidesData = [
+const drawerList = [
   {
-    key: 1,
-    image: appImages.slider1,
+    id: 1,
+    label: 'Home',
+    screen: 'Home',
+    icon: appIcons.homeIcon,
   },
   {
-    key: 2,
-    image: appImages.slider2,
+    id: 2,
+    label: 'History',
+    screen: 'History',
+    icon: appIcons.historyIcon,
   },
   {
-    key: 3,
-    image: appImages.slider3,
+    id: 3,
+    label: 'Inbox',
+    screen: 'Chat',
+    icon: appIcons.chatIcon,
+  },
+  {
+    id: 4,
+    label: 'Wallet',
+    screen: 'Wallet',
+    icon: appIcons.walletIcon,
   },
 ];
 
-const drawerList = [
+const commonSettings = [
   {
-    icon: appIcons.homeIcon,
-    label: 'Home',
-    screen: 'Fighter',
+    id: 1,
+    icon: appIcons.personIcon,
+    screen: 'PersonalInfo',
+    title: 'Personal Information',
+    iconStyle: {width: 17, height: 20},
   },
   {
-    icon: appIcons.calendarSelIcon,
-    label: 'My Events',
-    screen: 'Events',
+    id: 2,
+    screen: 'CarInfo',
+    icon: appIcons.carIcon,
+    title: 'Car Information',
+    iconStyle: {width: 29, height: 12},
   },
   {
-    icon: appIcons.requestsIcon,
-    label: 'Friend Request',
-    screen: 'FriendRequests',
+    id: 3,
+    screen: 'PaymentMethods',
+    icon: appIcons.cardIcon,
+    title: 'Payment Methods',
+    iconStyle: {width: 29, height: 22},
   },
   {
-    icon: appIcons.aboutIcon,
-    label: 'About Us',
-    screen: 'About',
+    id: 4,
+    screen: 'QuickChats',
+    icon: appIcons.speechIcon,
+    title: 'Quick Chats',
+    iconStyle: {width: 28, height: 28},
   },
+];
+
+const guideLines = [
   {
+    id: 1,
+    screen: 'Support',
+    title: 'Support',
     icon: appIcons.supportIcon,
-    label: 'Support',
-    screen: 'SupportStack',
+    iconStyle: {width: 21, height: 20},
   },
   {
-    icon: appIcons.infoIcon,
-    label: 'FAQ',
+    id: 2,
     screen: 'FAQ',
+    icon: appIcons.helpIcon,
+    title: 'Frequently Asked Questions',
+    iconStyle: {width: 22, height: 22},
   },
   {
-    icon: appIcons.infoIcon,
-    label: 'Preferences',
-    screen: 'Preferences',
+    id: 3,
+    screen: 'TermsConditions',
+    icon: appIcons.helpIcon,
+    title: 'Terms & Conditions',
+    iconStyle: {width: 22, height: 22},
   },
   {
-    icon: appIcons.infoIcon,
-    label: 'Privacy Policy',
+    id: 4,
     screen: 'PrivacyPolicy',
+    icon: appIcons.privacyIcon,
+    title: 'Privacy Policy',
+    iconStyle: {width: 20, height: 23},
   },
   {
-    icon: appIcons.infoIcon,
-    label: 'Terms & Conditions',
-    screen: 'TermsofUse',
+    id: 5,
+    screen: 'BlockList',
+    icon: appIcons.blockIcon,
+    title: 'Block List',
+    iconStyle: {width: 20, height: 20},
   },
   {
-    icon: appIcons.settingsIcon,
-    label: 'Settings',
-    screen: 'SettingsStack',
+    id: 6,
+    screen: 'LogOut',
+    icon: appIcons.logoutIcon,
+    title: 'Log out',
+    iconStyle: {width: 19, height: 18},
   },
 ];
 
 export {
   web_client_id,
   stripe_publishableKey,
-  slidesData,
   networkText,
   image_options,
   drawerList,
+  commonSettings,
+  guideLines,
 };
