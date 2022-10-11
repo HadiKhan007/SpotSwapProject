@@ -32,8 +32,9 @@ const AppInput = ({
   keyboardType,
   errorMessage,
   countryPicker,
-  leftIcon = false,
+  width = '100%',
   onSubmitEditing,
+  leftIcon = false,
   rightIcon = false,
   renderErrorMessage,
   capitalize = 'none',
@@ -45,9 +46,9 @@ const AppInput = ({
   const [showPass, setShowPass] = React.useState(secureTextEntry);
 
   return (
-    <>
+    <View>
       {title && <Text style={styles.labelTxtStyle}>{title}</Text>}
-      <View style={styles.inputContainer}>
+      <View style={styles.inputContainer(width)}>
         {leftIcon && (
           <>
             {countryInput ? (
@@ -112,7 +113,7 @@ const AppInput = ({
       ) : (
         <Text style={styles.errorTxtStyle} />
       )}
-    </>
+    </View>
   );
 };
 
@@ -125,23 +126,25 @@ const styles = StyleSheet.create({
     paddingBottom: WP('2.5'),
     fontFamily: family.SFProText_Regular,
   },
-  inputContainer: {
-    width: '100%',
-    borderWidth: 1,
-    borderRadius: 10,
-    flexDirection: 'row',
-    borderColor: colors.s3,
-    backgroundColor: colors.t1,
-    paddingHorizontal: WP('3.2'),
-    height: platformOrientedCode(55, 55),
+  inputContainer: width => {
+    return {
+      width: width,
+      borderWidth: 1,
+      borderRadius: 10,
+      flexDirection: 'row',
+      borderColor: colors.s3,
+      backgroundColor: colors.t1,
+      paddingHorizontal: WP('3.2'),
+      height: platformOrientedCode(WP('14'), WP('14')),
+    };
   },
   inputStyle: (leftIcon, rightIcon) => {
     return {
       color: colors.white,
       fontSize: size.normal,
       bottom: platformOrientedCode(0, 1),
-      height: platformOrientedCode(55, 55),
       width: leftIcon || rightIcon ? '90%' : '100%',
+      height: platformOrientedCode(WP('14'), WP('14')),
     };
   },
   iconContainer: {

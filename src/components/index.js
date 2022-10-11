@@ -15,7 +15,7 @@ export * from './Loaders/AppLoader';
 export * from './Inputs/AppInput';
 
 //Modals
-export * from './Modal/DeleteModal';
+export * from './Modal/AppModal';
 export * from './Modal/ImagePickerModal';
 
 //TextFields

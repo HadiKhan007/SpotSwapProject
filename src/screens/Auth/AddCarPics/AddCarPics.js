@@ -43,7 +43,7 @@ const AddCarPics = ({navigation}) => {
         width: 300,
         height: 400,
       }).then(image => {
-        setCarImages(image);
+        setCarImages([...carImages, {img: image}]);
       });
     }, 400);
   };

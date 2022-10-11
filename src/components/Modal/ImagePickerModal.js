@@ -10,39 +10,34 @@ export const ImagePickerModal = ({
   onPressCamera,
 }) => {
   return (
-    <View style={styles.container}>
-      <Modal onBackdropPress={onPressHide} isVisible={show}>
-        <View style={styles.modalContainer}>
-          <TouchableOpacity onPress={onPressCamera} style={styles.btn}>
-            <View style={styles.leftContainer}>
-              <Image source={appIcons.cameraIcon} style={styles.imageStyle} />
-            </View>
-            <View style={styles.textContainer}>
-              <Text style={styles.btnText}>Take Image from Camera</Text>
-            </View>
-          </TouchableOpacity>
-          <View style={styles.separator} />
-          <TouchableOpacity onPress={onPressGallery} style={styles.btn}>
-            <View style={styles.leftContainer}>
-              <Image source={appIcons.galleryIcon} style={styles.imageStyle} />
-            </View>
-            <View style={styles.textContainer}>
-              <Text style={styles.btnText}>Pick Image from Gallery</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-      </Modal>
-    </View>
+    <Modal onBackdropPress={onPressHide} isVisible={show}>
+      <View style={styles.modalContainer}>
+        <TouchableOpacity onPress={onPressCamera} style={styles.btn}>
+          <View style={styles.leftContainer}>
+            <Image source={appIcons.cameraIcon} style={styles.imageStyle} />
+          </View>
+          <View style={styles.textContainer}>
+            <Text style={styles.btnText}>Take Image from Camera</Text>
+          </View>
+        </TouchableOpacity>
+        <View style={styles.separator} />
+        <TouchableOpacity onPress={onPressGallery} style={styles.btn}>
+          <View style={styles.leftContainer}>
+            <Image source={appIcons.galleryIcon} style={styles.imageStyle} />
+          </View>
+          <View style={styles.textContainer}>
+            <Text style={styles.btnText}>Pick Image from Gallery</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+    </Modal>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   modalContainer: {
     width: '90%',
-    borderRadius: 10,
+    borderRadius: 20,
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',

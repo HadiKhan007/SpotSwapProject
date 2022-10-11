@@ -52,7 +52,7 @@ const commonSettings = [
   },
   {
     id: 2,
-    screen: 'CarInfo',
+    screen: 'UpdateCarInfo',
     icon: appIcons.carIcon,
     title: 'Car Information',
     iconStyle: {width: 29, height: 12},
@@ -83,7 +83,7 @@ const guideLines = [
   },
   {
     id: 2,
-    screen: 'FAQ',
+    screen: 'FAQs',
     icon: appIcons.helpIcon,
     title: 'Frequently Asked Questions',
     iconStyle: {width: 22, height: 22},
@@ -118,6 +118,63 @@ const guideLines = [
   },
 ];
 
+const faq = [
+  {
+    id: 1,
+    ques: 'How does SpotSwap works?',
+    ans: 'SpotSwap will be a mobile app that allows EV owners to dynamically update ranges estimates based on real-time driving factors.',
+    isSelected: false,
+  },
+  {
+    id: 2,
+    ques: 'How does SpotSwap works?',
+    ans: 'SpotSwap will be a mobile app that allows EV owners to dynamically update ranges estimates based on real-time driving factors.',
+    isSelected: false,
+  },
+  {
+    id: 3,
+    ques: 'How does SpotSwap works?',
+    ans: 'SpotSwap will be a mobile app that allows EV owners to dynamically update ranges estimates based on real-time driving factors.',
+    isSelected: false,
+  },
+  {
+    id: 4,
+    ques: 'How does SpotSwap works?',
+    ans: 'SpotSwap will be a mobile app that allows EV owners to dynamically update ranges estimates based on real-time driving factors.',
+    isSelected: false,
+  },
+  {
+    id: 5,
+    ques: 'How does SpotSwap works?',
+    ans: 'SpotSwap will be a mobile app that allows EV owners to dynamically update ranges estimates based on real-time driving factors.',
+    isSelected: false,
+  },
+  {
+    id: 6,
+    ques: 'How does SpotSwap works?',
+    ans: 'SpotSwap will be a mobile app that allows EV owners to dynamically update ranges estimates based on real-time driving factors.',
+    isSelected: false,
+  },
+  {
+    id: 7,
+    ques: 'How does SpotSwap works?',
+    ans: 'SpotSwap will be a mobile app that allows EV owners to dynamically update ranges estimates based on real-time driving factors.',
+    isSelected: false,
+  },
+  {
+    id: 8,
+    ques: 'How does SpotSwap works?',
+    ans: 'SpotSwap will be a mobile app that allows EV owners to dynamically update ranges estimates based on real-time driving factors.',
+    isSelected: false,
+  },
+  {
+    id: 9,
+    ques: 'How does SpotSwap works?',
+    ans: 'SpotSwap will be a mobile app that allows EV owners to dynamically update ranges estimates based on real-time driving factors.',
+    isSelected: false,
+  },
+];
+
 export {
   web_client_id,
   stripe_publishableKey,
@@ -126,4 +183,5 @@ export {
   drawerList,
   commonSettings,
   guideLines,
+  faq,
 };
