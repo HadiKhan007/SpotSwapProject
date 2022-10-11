@@ -28,6 +28,10 @@ export {
   resetPassFormFields,
   carInfoVS,
   carInfoFormFields,
+  personalInfoVS,
+  personalInfoFormFields,
+  updateCarInfoVS,
+  updateCarInfoFormFields,
 } from './utilities/validations';
 export {
   StatusBarHeight,

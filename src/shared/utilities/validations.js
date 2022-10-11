@@ -30,6 +30,22 @@ export const resetPassFormFields = {
   confirmPassword: '',
 };
 
+export const personalInfoFormFields = {
+  name: '',
+  email: '',
+  number: '',
+};
+
+export const updateCarInfoFormFields = {
+  brand: '',
+  model: '',
+  color: '',
+  width: '',
+  length: '',
+  height: '',
+  plateNumber: '',
+};
+
 export const LoginVS = yup.object().shape({
   email: yup
     .string()
@@ -84,13 +100,35 @@ export const registerVS = yup.object().shape({
 export const carInfoVS = yup.object().shape({
   brand: yup.object().shape().required('Brand Required'),
   model: yup.object().shape().required('Model Required'),
-  length: yup
-    .number()
-    .typeError('Invalid contact number')
-    .required('Length Required'),
+  length: yup.number().typeError('Invalid length').required('Length Required'),
   color: yup.string().required('Color Required').label('color'),
   plateNumber: yup
     .string()
     .required('Plate Number Required')
     .label('plateNumber'),
+});
+
+export const updateCarInfoVS = yup.object().shape({
+  brand: yup.object().shape().required('Brand Required'),
+  model: yup.object().shape().required('Model Required'),
+  length: yup.number().typeError('Invalid length').required('Length Required'),
+  width: yup.number().typeError('Invalid width').required('Width Required'),
+  height: yup.number().typeError('Invalid height').required('Height Required'),
+  color: yup.string().required('Color Required').label('color'),
+  plateNumber: yup
+    .string()
+    .required('Plate Number Required')
+    .label('plateNumber'),
+});
+
+export const personalInfoVS = yup.object().shape({
+  name: yup.string().required('Name Required').label('name'),
+  email: yup
+    .string()
+    .required('Email Required')
+    .email('Please provide a valid email address'),
+  number: yup
+    .number()
+    .typeError('Invalid contact number')
+    .required('Contact Number Required'),
 });

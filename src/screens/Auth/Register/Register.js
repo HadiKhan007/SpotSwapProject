@@ -17,7 +17,6 @@ import {
   appImages,
   registerVS,
   registerFormFields,
-  platformOrientedCode,
 } from '../../../shared/exporter';
 import {Spacer, AppInput, AppButton} from '../../../components';
 import styles from './styles';

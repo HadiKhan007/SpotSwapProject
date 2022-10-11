@@ -17,7 +17,6 @@ import {
   appLogos,
   appImages,
   loginFormFields,
-  platformOrientedCode,
 } from '../../../shared/exporter';
 import {Spacer, AppInput, AppButton} from '../../../components';
 import styles from './styles';
@@ -54,7 +53,7 @@ const Login = ({navigation}) => {
           <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
             <Text
               style={styles.regTxtStyle}
-              onPress={() => navigation.navigate('App')}>
+              onPress={() => navigation.navigate('Register')}>
               Register
             </Text>
             <Image
