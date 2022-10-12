@@ -16,25 +16,6 @@ const styles = StyleSheet.create({
   scrollViewStyle: {
     flexGrow: 1,
   },
-  imageContainer: {
-    width: WP('35'),
-    height: WP('35'),
-    marginTop: WP('5'),
-    alignSelf: 'center',
-    alignItems: 'center',
-    borderRadius: WP('35'),
-    justifyContent: 'center',
-    backgroundColor: colors.t2,
-  },
-  imgStyle: {
-    width: WP('26'),
-    height: WP('26'),
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  imgRadiusStyle: {
-    borderRadius: WP('25'),
-  },
   bottomView: {
     alignSelf: 'center',
     position: 'absolute',

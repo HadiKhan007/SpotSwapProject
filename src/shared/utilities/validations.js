@@ -46,6 +46,10 @@ export const updateCarInfoFormFields = {
   plateNumber: '',
 };
 
+export const quickChatFormFields = {
+  chat: '',
+};
+
 export const LoginVS = yup.object().shape({
   email: yup
     .string()
@@ -131,4 +135,8 @@ export const personalInfoVS = yup.object().shape({
     .number()
     .typeError('Invalid contact number')
     .required('Contact Number Required'),
+});
+
+export const quickChatVS = yup.object().shape({
+  chat: yup.string().required('Quick Chat Required').label('chat'),
 });

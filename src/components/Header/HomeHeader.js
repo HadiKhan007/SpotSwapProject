@@ -54,8 +54,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   iconStyle: {
-    height: WP('6'),
-    width: WP('5.5'),
+    width: WP('7'),
+    height: WP('7'),
   },
   gradientStyle: {
     padding: 10,

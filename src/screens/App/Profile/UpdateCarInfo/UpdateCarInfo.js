@@ -1,5 +1,12 @@
 import React, {useRef, useState} from 'react';
-import {Text, View, Image, FlatList, ImageBackground} from 'react-native';
+import {
+  Text,
+  View,
+  Image,
+  FlatList,
+  ImageBackground,
+  TouchableOpacity,
+} from 'react-native';
 import {Formik} from 'formik';
 import {Icon} from 'react-native-elements';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -20,7 +27,6 @@ import {
   AppModal,
 } from '../../../../components';
 import styles from './styles';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const UpdateCarInfo = ({navigation}) => {
   const formikRef = useRef();

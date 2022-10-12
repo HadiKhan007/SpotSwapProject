@@ -5,12 +5,15 @@ export const colors = {
   p3: '#50AFFF80',
   p4: '#436A6B',
   p5: '#50AFFF',
+  p6: '#228AE2',
+  p7: '#1E96FC',
 
   // Secondary Color
   s1: '#FA515B',
   s2: '#DE2B36',
   s3: '#4A7072',
   s4: '#13AE93',
+  s5: '#EE3725',
 
   // Black Color
   b1: '#000000',

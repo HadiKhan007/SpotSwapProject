@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {View, ImageBackground} from 'react-native';
+import {View, ImageBackground, TouchableOpacity} from 'react-native';
 import {Formik} from 'formik';
 import {Icon} from 'react-native-elements';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -20,7 +20,6 @@ import {
   ImagePickerModal,
 } from '../../../../components';
 import styles from './styles';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 
 const PersonalInfo = ({navigation}) => {
   const formikRef = useRef();
