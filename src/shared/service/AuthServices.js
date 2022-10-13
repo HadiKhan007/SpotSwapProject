@@ -22,8 +22,35 @@ export const socialLogin = async params => {
   return res.data;
 };
 
+export const profileUpdate = async params => {
+  const res = await axios.post(`${BASE_URL}${ENDPOINTS.SOCIAL_USER}`, params, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+  return res.data;
+};
+
 export const registerUser = async params => {
   const res = await axios.post(`${BASE_URL}${ENDPOINTS.REGISTER}`, params, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+  return res.data;
+};
+
+export const carSpecs = async params => {
+  const res = await axios.post(`${BASE_URL}${ENDPOINTS.CAR_SPECS}`, params, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  });
+  return res.data;
+};
+
+export const carProfile = async params => {
+  const res = await axios.post(`${BASE_URL}${ENDPOINTS.CAR_PROFILE}`, params, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },

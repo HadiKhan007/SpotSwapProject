@@ -9,6 +9,7 @@ const initialState = {
   resetPassRes: null,
   otp_verify: null,
   resendData: null,
+  carSpecs: null,
 };
 
 const authReducer = (state = initialState, actions) => {
@@ -46,6 +47,20 @@ const authReducer = (state = initialState, actions) => {
         isFailure: true,
         userInfo: null,
       };
+    case TYPES.UPDATE_SOCIAL_PROFILE_REQ_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isSuccess: true,
+        isFailure: false,
+      };
+    case TYPES.UPDATE_SOCIAL_PROFILE_REQ_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        isSuccess: false,
+        isFailure: true,
+      };
     case TYPES.SIGNUP_SUCCESS_REQUEST:
       return {
         ...state,
@@ -61,6 +76,36 @@ const authReducer = (state = initialState, actions) => {
         isSuccess: false,
         isFailure: true,
         userInfo: null,
+      };
+    case TYPES.GET_CAR_SPECS_REQUEST_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isSuccess: true,
+        isFailure: false,
+        carSpecs: payload,
+      };
+    case TYPES.GET_CAR_SPECS_REQUEST_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        isSuccess: false,
+        isFailure: true,
+        carSpecs: null,
+      };
+    case TYPES.GET_CAR_SPECS_REQUEST_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isSuccess: true,
+        isFailure: false,
+      };
+    case TYPES.GET_CAR_SPECS_REQUEST_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        isSuccess: false,
+        isFailure: true,
       };
     case TYPES.FORGOT_PASSWORD_SUCCESS:
       return {
@@ -85,7 +130,6 @@ const authReducer = (state = initialState, actions) => {
         isSuccess: true,
         isFailure: false,
         otp_verify: payload,
-        userInfo: payload,
       };
     case TYPES.OTP_VERIFY_FAILURE:
       return {
@@ -94,7 +138,6 @@ const authReducer = (state = initialState, actions) => {
         isSuccess: false,
         isFailure: true,
         otp_verify: null,
-        userInfo: null,
       };
     case TYPES.RESEND_OTP_SUCCESS:
       return {

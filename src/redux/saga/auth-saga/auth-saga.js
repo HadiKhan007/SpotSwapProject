@@ -4,13 +4,16 @@ import {responseValidator} from '../../../shared/exporter';
 import {
   loginUser,
   socialLogin,
+  profileUpdate,
   registerUser,
   forgotPassword,
   OTPVerify,
   resendOTP,
   resetPassword,
   logoutUser,
-} from '../../../shared/service/AuthService';
+  carSpecs,
+  carProfile,
+} from '../../../shared/service/AuthServices';
 import * as types from '../../actions/types/auth_types';
 
 // ************* Login Saga **************
@@ -25,12 +28,11 @@ function* login(params) {
         type: types.LOGIN_REQUEST_SUCCESS,
         payload: res,
       });
-      console.log(res);
       AsyncStorage.setItem('usertoken', res?.user?.auth_token);
       params?.cbSuccess(res);
     }
   } catch (error) {
-    console.log(error);
+    console.log('Error is ==> ', error);
     yield put({
       type: types.LOGIN_REQUEST_FAILURE,
       payload: null,
@@ -52,11 +54,6 @@ function* socialLoginUser(params) {
         type: types.SOCIAL_LOGIN_REQUEST_SUCCESS,
         payload: res,
       });
-      yield put({
-        type: types.LOGIN_REQUEST_SUCCESS,
-        payload: res,
-      });
-      console.log(res);
       AsyncStorage.setItem('usertoken', res?.user?.auth_token);
       params?.cbSuccess(res);
     } else {
@@ -64,15 +61,41 @@ function* socialLoginUser(params) {
         type: types.SOCIAL_LOGIN_REQUEST_FAILURE,
         payload: null,
       });
+    }
+  } catch (error) {
+    console.log('Error is ==> ', error);
+    yield put({
+      type: types.SOCIAL_LOGIN_REQUEST_FAILURE,
+      payload: null,
+    });
+    let msg = responseValidator(error?.response?.status);
+    params?.cbFailure(msg);
+  }
+}
+
+// ************* Update Social Profile Saga **************
+export function* updateSocialProfileReq() {
+  yield takeLatest(types.UPDATE_SOCIAL_PROFILE_REQ, socialProfileUpdate);
+}
+function* socialProfileUpdate(params) {
+  try {
+    const res = yield profileUpdate(params?.params);
+    if (res) {
       yield put({
-        type: types.LOGIN_REQUEST_FAILURE,
+        type: types.UPDATE_SOCIAL_PROFILE_REQ_SUCCESS,
         payload: res,
+      });
+      params?.cbSuccess(res);
+    } else {
+      yield put({
+        type: types.UPDATE_SOCIAL_PROFILE_REQ_FAILURE,
+        payload: null,
       });
     }
   } catch (error) {
-    console.log(error);
+    console.log('Error is ==> ', error);
     yield put({
-      type: types.SOCIAL_LOGIN_REQUEST_FAILURE,
+      type: types.UPDATE_SOCIAL_PROFILE_REQ_FAILURE,
       payload: null,
     });
     let msg = responseValidator(error?.response?.status);
@@ -88,10 +111,68 @@ function* signUp(params) {
   try {
     const res = yield registerUser(params?.params);
     if (res) {
-      console.log(res);
+      yield put({
+        type: types.SIGNUP_SUCCESS_REQUEST,
+        payload: res,
+      });
       params?.cbSuccess(res);
     }
   } catch (error) {
+    console.log('Error is ==> ', error);
+    yield put({
+      type: types.SIGNUP_FAILURE_REQUEST,
+      payload: null,
+    });
+    let msg = responseValidator(error?.response?.status, error?.response?.data);
+    params?.cbFailure(msg);
+  }
+}
+
+// ************* Get Car Specs Saga **************
+export function* getCarSpecsRequest() {
+  yield takeLatest(types.GET_CAR_SPECS_REQUEST, getCarSpecs);
+}
+function* getCarSpecs(params) {
+  try {
+    const res = yield carSpecs(params?.params);
+    if (res) {
+      yield put({
+        type: types.GET_CAR_SPECS_REQUEST_SUCCESS,
+        payload: res,
+      });
+      params?.cbSuccess(res);
+    }
+  } catch (error) {
+    console.log('Error is ==> ', error);
+    yield put({
+      type: types.SIGNUP_FAILURE_REQUEST,
+      payload: null,
+    });
+    let msg = responseValidator(error?.response?.status, error?.response?.data);
+    params?.cbFailure(msg);
+  }
+}
+
+// ************* Create Car Profile Saga **************
+export function* createCarProfileRequest() {
+  yield takeLatest(types.CAR_PROFILE_REQUEST, createCarProfile);
+}
+function* createCarProfile(params) {
+  try {
+    const res = yield carProfile(params?.params);
+    if (res) {
+      yield put({
+        type: types.CAR_PROFILE_REQUEST_SUCCESS,
+        payload: res,
+      });
+      params?.cbSuccess(res);
+    }
+  } catch (error) {
+    console.log('Error is ==> ', error);
+    yield put({
+      type: types.CAR_PROFILE_REQUEST_FAILURE,
+      payload: null,
+    });
     let msg = responseValidator(error?.response?.status, error?.response?.data);
     params?.cbFailure(msg);
   }
@@ -112,6 +193,7 @@ function* forgot(params) {
       params?.cbSuccess(res);
     }
   } catch (error) {
+    console.log('Error is ==> ', error);
     yield put({
       type: types.FORGOT_PASSWORD_FAILURE,
       payload: null,
@@ -133,12 +215,11 @@ function* verifyOTP(params) {
         type: types.OTP_VERIFY_SUCCESS,
         payload: res,
       });
-      console.log(res);
       AsyncStorage.setItem('usertoken', res?.user?.auth_token);
       params?.cbSuccess(res);
     }
   } catch (error) {
-    console.log(error);
+    console.log('Error is ==> ', error);
     yield put({
       type: types.OTP_VERIFY_FAILURE,
       payload: null,
@@ -163,6 +244,7 @@ function* resend_otp(params) {
       params?.cbSuccess(res);
     }
   } catch (error) {
+    console.log('Error is ==> ', error);
     yield put({
       type: types.RESEND_OTP_FAILURE,
       payload: null,
@@ -187,6 +269,7 @@ function* resetPass(params) {
       params?.cbSuccess(res);
     }
   } catch (error) {
+    console.log('Error is ==> ', error);
     yield put({
       type: types.RESET_PASSWORD_FAILURE,
       payload: null,
@@ -207,8 +290,12 @@ function* logout(params) {
       type: types.LOGOUT_REQUEST_SUCCESS,
       payload: params,
     });
-    params?.callBack();
+    params?.cbSuccess(res);
   } catch (error) {
-    console.log(error);
+    console.log('Error is ==> ', error);
+    yield put({
+      type: types.LOGOUT_REQUEST_FAILURE,
+      payload: null,
+    });
   }
 }
