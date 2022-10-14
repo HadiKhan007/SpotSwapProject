@@ -35,6 +35,29 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb654542989551827</string>
+				<string>com.googleusercontent.apps.647435031260-mej7j6r56eqjitikif7jfket04tc6v94</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>654542989551827</string>
+	<key>FacebookClientToken</key>
+	<string>dfe10ab130f8884d4835c247c48348d6</string>
+	<key>FacebookDisplayName</key>
+	<string>SpotSwap</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+	<string>fbapi</string>
+	<string>fb-messenger-share-api</string>
+	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>Use for Camera in SpotSwap App</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>

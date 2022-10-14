@@ -1,5 +1,5 @@
-import React, {useRef} from 'react';
-import {Text, ImageBackground} from 'react-native';
+import React, {useRef, useState} from 'react';
+import {Text, Alert, ImageBackground} from 'react-native';
 import {Formik} from 'formik';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {
@@ -8,21 +8,48 @@ import {
   appImages,
   sendMailVS,
   sendMailFormFields,
-  platformOrientedCode,
 } from '../../../shared/exporter';
-import {Spacer, AppInput, AppButton} from '../../../components';
+import {Spacer, AppInput, AppButton, AppLoader} from '../../../components';
 import styles from './styles';
+
+// redux stuff
+import {useDispatch} from 'react-redux';
+import {forgotPassRequest} from '../../../redux/actions';
 
 const ForgotPassword = ({navigation}) => {
   const formikRef = useRef();
+  const [isLoading, setIsLoading] = useState(false);
+
+  // redux stuff
+  const dispatch = useDispatch(null);
 
   const handleSendMail = values => {
-    formikRef.current?.resetForm();
-    navigation.navigate('VerificationSent');
+    setIsLoading(true);
+    const params = new FormData();
+    params.append('email', values?.email);
+    dispatch(
+      forgotPassRequest(
+        params,
+        res => {
+          setIsLoading(false);
+          formikRef.current?.resetForm();
+          navigation.navigate('VerificationSent', {mail: values?.email});
+        },
+        err => {
+          setIsLoading(false);
+          Alert.alert('Mail Not Sent', err, [
+            {
+              text: 'OK',
+            },
+          ]);
+        },
+      ),
+    );
   };
 
   return (
     <ImageBackground style={styles.rootContainer} source={appImages.app_bg}>
+      <AppLoader loading={isLoading} />
       <Formik
         innerRef={formikRef}
         initialValues={sendMailFormFields}

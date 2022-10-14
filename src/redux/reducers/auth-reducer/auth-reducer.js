@@ -21,7 +21,7 @@ const authReducer = (state = initialState, actions) => {
         loading: false,
         isSuccess: true,
         isFailure: false,
-        userInfo: payload,
+        userInfo: payload?.user,
       };
     case TYPES.LOGIN_REQUEST_FAILURE:
       return {
@@ -37,7 +37,7 @@ const authReducer = (state = initialState, actions) => {
         loading: false,
         isSuccess: true,
         isFailure: false,
-        userInfo: payload,
+        userInfo: payload?.user,
       };
     case TYPES.SOCIAL_LOGIN_REQUEST_FAILURE:
       return {
@@ -67,7 +67,7 @@ const authReducer = (state = initialState, actions) => {
         loading: false,
         isSuccess: true,
         isFailure: false,
-        userInfo: payload,
+        userInfo: payload?.user,
       };
     case TYPES.SIGNUP_FAILURE_REQUEST:
       return {

@@ -10,7 +10,7 @@ const Splash = ({navigation}) => {
 
   const handleAppEntry = async () => {
     setTimeout(() => {
-      navigation.replace('App');
+      navigation.replace('Auth');
     }, 500);
   };
 

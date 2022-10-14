@@ -91,10 +91,9 @@ export const resendOTPRequest = (params, cbSuccess, cbFailure) => {
 };
 
 //Reset Password Action
-export const resetPassRequest = (route, params, cbSuccess, cbFailure) => {
+export const resetPassRequest = (params, cbSuccess, cbFailure) => {
   return {
     type: TYPES.RESET_PASSWORD_REQUEST,
-    route,
     params,
     cbSuccess,
     cbFailure,

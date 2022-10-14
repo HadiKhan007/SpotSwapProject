@@ -1,4 +1,4 @@
-const BASE_URL = 'https://housibly.herokuapp.com/api/v1/';
+const BASE_URL = 'https://spotswap-vs.herokuapp.com/api/v1/';
 const CHAT_URL = 'ws://housibly.herokuapp.com/cable?';
 
 const ENDPOINTS = {
@@ -13,7 +13,7 @@ const ENDPOINTS = {
   VERIFY_OTP: 'reset_passwords/verify_otp',
   RESEND_OTP: 'reset_passwords/resend_otp',
   RESET_PASS: 'reset_passwords/reset_password',
-  LOGOUT: 'authentication/logout', //
+  LOGOUT: 'authentication/logout',
   // Profile endpoints
   GET_PROFILE: 'users/get_user',
   UPDATE_PROFILE: 'users/update_user',

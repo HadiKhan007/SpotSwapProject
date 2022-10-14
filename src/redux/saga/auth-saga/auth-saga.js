@@ -32,7 +32,6 @@ function* login(params) {
       params?.cbSuccess(res);
     }
   } catch (error) {
-    console.log('Error is ==> ', error);
     yield put({
       type: types.LOGIN_REQUEST_FAILURE,
       payload: null,
@@ -118,7 +117,6 @@ function* signUp(params) {
       params?.cbSuccess(res);
     }
   } catch (error) {
-    console.log('Error is ==> ', error);
     yield put({
       type: types.SIGNUP_FAILURE_REQUEST,
       payload: null,
@@ -145,7 +143,7 @@ function* getCarSpecs(params) {
   } catch (error) {
     console.log('Error is ==> ', error);
     yield put({
-      type: types.SIGNUP_FAILURE_REQUEST,
+      type: types.GET_CAR_SPECS_REQUEST_FAILURE,
       payload: null,
     });
     let msg = responseValidator(error?.response?.status, error?.response?.data);
@@ -184,7 +182,7 @@ export function* forgotPassRequest() {
 }
 function* forgot(params) {
   try {
-    const res = yield forgotPassword(params?.route, params?.params);
+    const res = yield forgotPassword(params?.params);
     if (res) {
       yield put({
         type: types.FORGOT_PASSWORD_SUCCESS,
@@ -215,7 +213,6 @@ function* verifyOTP(params) {
         type: types.OTP_VERIFY_SUCCESS,
         payload: res,
       });
-      AsyncStorage.setItem('usertoken', res?.user?.auth_token);
       params?.cbSuccess(res);
     }
   } catch (error) {
@@ -260,7 +257,7 @@ export function* resetPassRequest() {
 }
 function* resetPass(params) {
   try {
-    const res = yield resetPassword(params?.route, params?.params);
+    const res = yield resetPassword(params?.params);
     if (res) {
       yield put({
         type: types.RESET_PASSWORD_SUCCESS,
