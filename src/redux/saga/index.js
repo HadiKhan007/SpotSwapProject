@@ -16,7 +16,16 @@ import {
 } from './auth-saga/auth-saga';
 
 // Profile Requests
-import {getProfileRequest} from './profile-saga/profile-saga';
+import {
+  getProfileRequest,
+  updateProfileRequest,
+  getCarInfoRequest,
+  updateCarInfoRequest,
+  getQuickChatsRequest,
+  addQuickChatRequest,
+  editQuickChatRequest,
+  removeQuickChatRequest,
+} from './profile-saga/profile-saga';
 
 export function* rootSaga() {
   // Auth Requests
@@ -33,4 +42,11 @@ export function* rootSaga() {
   yield fork(logoutRequestSaga);
   // Profile Requests
   yield fork(getProfileRequest);
+  yield fork(updateProfileRequest);
+  yield fork(getCarInfoRequest);
+  yield fork(updateCarInfoRequest);
+  yield fork(getQuickChatsRequest);
+  yield fork(addQuickChatRequest);
+  yield fork(editQuickChatRequest);
+  yield fork(removeQuickChatRequest);
 }

@@ -14,4 +14,14 @@ export {
 } from './auth-actions/auth-actions';
 
 // profile actions
-export {getProfileRequest} from './profile-actions/profile-actions';
+export {
+  getProfileRequest,
+  updateProfileRequest,
+  getCarInfoRequest,
+  updateCarInfoRequest,
+  getQuickChatsRequest,
+  addQuickChatRequest,
+  editQuickChatRequest,
+  removeQuickChatRequest,
+  staticPagesRequest,
+} from './profile-actions/profile-actions';

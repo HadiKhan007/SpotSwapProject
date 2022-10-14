@@ -17,8 +17,8 @@ const ENDPOINTS = {
   // Profile endpoints
   GET_PROFILE: 'users/get_user',
   UPDATE_PROFILE: 'users/update_user',
-  GET_CAR: 'authentication/get_car_profile',
-  UPDATE_CAR: 'authentication/update_car_profile',
+  GET_CAR_IFNO: 'authentication/get_car_profile',
+  UPDATE_CAR_INFO: 'authentication/update_car_profile',
   QUICK_CHATS: 'quick_chats/get_all_quick_chat',
   ADD_CHAT: 'quick_chats/create_quick_chat',
   EDIT_CHAT: 'quick_chats/update_quick_chat',
