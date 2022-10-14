@@ -1,5 +1,10 @@
 import {StyleSheet} from 'react-native';
-import {WP, colors, StatusBarHeight} from '../../../../shared/exporter';
+import {
+  WP,
+  colors,
+  StatusBarHeight,
+  platformOrientedCode,
+} from '../../../../shared/exporter';
 
 const styles = StyleSheet.create({
   rootContainer: {
@@ -31,10 +36,10 @@ const styles = StyleSheet.create({
     borderRadius: WP('25'),
   },
   bottomView: {
-    bottom: WP('12'),
     alignSelf: 'center',
     position: 'absolute',
     justifyContent: 'center',
+    bottom: platformOrientedCode(WP('2'), WP('12')),
   },
 });
 

@@ -1,5 +1,5 @@
-import React, {useRef} from 'react';
-import {Text, ImageBackground} from 'react-native';
+import React, {useRef, useState} from 'react';
+import {Text, Alert, ImageBackground} from 'react-native';
 import {Formik} from 'formik';
 import {Icon} from 'react-native-elements';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -9,21 +9,57 @@ import {
   appImages,
   resetPassVS,
   resetPassFormFields,
-  platformOrientedCode,
 } from '../../../shared/exporter';
-import {Spacer, AppInput, AppButton} from '../../../components';
+import {Spacer, AppInput, AppButton, AppLoader} from '../../../components';
 import styles from './styles';
 
-const ResetPassword = ({navigation}) => {
+// redux stuff
+import {useDispatch} from 'react-redux';
+import {resetPassRequest} from '../../../redux/actions';
+
+const ResetPassword = ({navigation, route}) => {
   const formikRef = useRef();
+  const [isLoading, setIsLoading] = useState(false);
+
+  // redux stuff
+  const dispatch = useDispatch(null);
 
   const handleUpdatePassword = values => {
-    formikRef.current?.resetForm();
-    navigation.navigate('PasswordUpdated');
+    setIsLoading(true);
+    const params = new FormData();
+    params.append('email', route?.params?.mail);
+    params.append('password', values?.password);
+    params.append('password_confirmation', values?.confirmPassword);
+    dispatch(
+      resetPassRequest(
+        params,
+        res => {
+          setIsLoading(false);
+          Alert.alert('Updated', res?.message, [
+            {
+              text: 'OK',
+              onPress: () => {
+                formikRef.current?.resetForm();
+                navigation.navigate('PasswordUpdated');
+              },
+            },
+          ]);
+        },
+        err => {
+          setIsLoading(false);
+          Alert.alert('Reset Fail', err, [
+            {
+              text: 'OK',
+            },
+          ]);
+        },
+      ),
+    );
   };
 
   return (
     <ImageBackground style={styles.rootContainer} source={appImages.app_bg}>
+      <AppLoader loading={isLoading} />
       <Formik
         innerRef={formikRef}
         initialValues={resetPassFormFields}

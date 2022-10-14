@@ -36,6 +36,8 @@ export const appIcons = {
   privacyIcon: require('../../assets/icons/privacy_icon.png'),
   blockIcon: require('../../assets/icons/block_icon.png'),
   logoutIcon: require('../../assets/icons/logout_icon.png'),
+  delIcon: require('../../assets/icons/del_icon.png'),
+  editIcon: require('../../assets/icons/edit_icon.png'),
 };
 
 export const appSvgs = {

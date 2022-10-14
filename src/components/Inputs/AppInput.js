@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     left: Platform.select({android: -8, ios: -5}),
   },
   modalBgColor: {
-    backgroundColor: colors.s3,
+    backgroundColor: colors.g6,
     onBackgroundTextColor: colors.white,
   },
 });

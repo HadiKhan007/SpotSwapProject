@@ -3,11 +3,18 @@ import {
   Text,
   View,
   Image,
+  Alert,
+  Platform,
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
 import {Formik} from 'formik';
 import {Icon} from 'react-native-elements';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
+import {LoginManager, AccessToken} from 'react-native-fbsdk-next';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {
   WP,
@@ -18,24 +25,134 @@ import {
   registerVS,
   registerFormFields,
 } from '../../../shared/exporter';
-import {Spacer, AppInput, AppButton} from '../../../components';
+import {Spacer, AppInput, AppButton, AppLoader} from '../../../components';
 import styles from './styles';
+
+// redux stuff
+import {useDispatch} from 'react-redux';
+import {signUpRequest, socialLoginRequest} from '../../../redux/actions';
 
 const Register = ({navigation}) => {
   const formikRef = useRef();
-  const [country, setcountry] = useState(null);
   const [cca2, setcca2] = useState('US');
+  const [country, setcountry] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [countryCode, setCountryCode] = useState('1');
   const [showCountryPicker, setshowCountryPicker] = useState(false);
 
+  // redux stuff
+  const dispatch = useDispatch(null);
+
   const handleRegister = values => {
-    formikRef.current?.resetForm();
-    navigation.navigate('AddCarInfo');
+    setIsLoading(true);
+    const params = new FormData();
+    params.append('name', values?.name);
+    params.append('email', values?.email);
+    params.append('contact', values?.number);
+    params.append('password', values?.password);
+    dispatch(
+      signUpRequest(
+        params,
+        res => {
+          setIsLoading(false);
+          formikRef.current?.resetForm();
+          navigation.navigate('AddCarInfo');
+        },
+        err => {
+          setIsLoading(false);
+          Alert.alert('Signup Fail', err[0], [
+            {
+              text: 'OK',
+            },
+          ]);
+        },
+      ),
+    );
   };
 
-  const handleGoogleLogin = () => {};
-  const handleFBLogin = () => {};
+  const handleGoogleLogin = async () => {
+    try {
+      setIsLoading(true);
+      // Get the users ID token
+      const {idToken} = await GoogleSignin.signIn();
+      if (idToken) {
+        handleSocialLogin('google', idToken);
+      } else {
+        setIsLoading(false);
+      }
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        console.log('cancel');
+        setIsLoading(false);
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        setIsLoading(false);
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        setIsLoading(false);
+      } else {
+        setIsLoading(false);
+      }
+    }
+  };
+
+  const handleFBLogin = () => {
+    try {
+      LoginManager.logOut();
+      if (Platform.OS === 'android') {
+        LoginManager.setLoginBehavior('web_only');
+      }
+      // Attempt a login using the Facebook login dialog asking for default permissions.
+      LoginManager.logInWithPermissions(['public_profile', 'email'])
+        .then(res => {
+          console.log('[Permission Granted]', res);
+          if (res?.isCancelled) {
+            console.log('User canceled login');
+          } else {
+            AccessToken.getCurrentAccessToken()
+              .then(token => {
+                console.log('Token ==> ', token?.accessToken);
+                handleSocialLogin('facebook', token?.accessToken);
+              })
+              .catch(error => console.log('error', error));
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } catch (err) {
+      console.log('[facebook err]', err);
+    }
+  };
+
   const handleAppleLogin = () => {};
+
+  const handleSocialLogin = (provider, token) => {
+    setIsLoading(true);
+    const params = new FormData();
+    params.append('token', token);
+    params.append('provider', provider);
+    dispatch(
+      socialLoginRequest(
+        params,
+        res => {
+          setIsLoading(false);
+          console.log('Res is ==> ', res);
+          if (res?.user?.profile_complete) {
+            navigation.navigate('App');
+          } else {
+            navigation.navigate('AddCarInfo');
+          }
+        },
+        err => {
+          setIsLoading(false);
+          Alert.alert('Login Fail', err, [
+            {
+              text: 'OK',
+            },
+          ]);
+        },
+      ),
+    );
+  };
 
   const setCountryValue = val => {
     setCountryCode(val.callingCode[0]);
@@ -46,6 +163,7 @@ const Register = ({navigation}) => {
 
   return (
     <ImageBackground style={styles.rootContainer} source={appImages.app_bg}>
+      <AppLoader loading={isLoading} />
       <Formik
         innerRef={formikRef}
         initialValues={registerFormFields}

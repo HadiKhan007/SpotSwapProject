@@ -1,6 +1,6 @@
 import * as TYPES from '../types/auth_types';
 
-//Email Validation Action
+//Login Action
 export const loginRequest = (params, cbSuccess, cbFailure) => {
   return {
     type: TYPES.LOGIN_REQUEST_REQUEST,
@@ -20,10 +20,40 @@ export const socialLoginRequest = (params, cbSuccess, cbFailure) => {
   };
 };
 
-//Sign up obj Action
+//Update Social Profile Action
+export const updateSocialProfileReq = (params, cbSuccess, cbFailure) => {
+  return {
+    type: TYPES.UPDATE_SOCIAL_PROFILE_REQ,
+    params,
+    cbSuccess,
+    cbFailure,
+  };
+};
+
+//Sign Up Action
 export const signUpRequest = (params, cbSuccess, cbFailure) => {
   return {
     type: TYPES.SIGNUP_REQUEST_REQUEST,
+    params,
+    cbSuccess,
+    cbFailure,
+  };
+};
+
+//Get Car Specs Action
+export const getCarSpecsRequest = (params, cbSuccess, cbFailure) => {
+  return {
+    type: TYPES.GET_CAR_SPECS_REQUEST,
+    params,
+    cbSuccess,
+    cbFailure,
+  };
+};
+
+//Create Car Profile Action
+export const createCarProfileRequest = (params, cbSuccess, cbFailure) => {
+  return {
+    type: TYPES.CAR_PROFILE_REQUEST,
     params,
     cbSuccess,
     cbFailure,
@@ -61,17 +91,16 @@ export const resendOTPRequest = (params, cbSuccess, cbFailure) => {
 };
 
 //Reset Password Action
-export const resetPassRequest = (route, params, cbSuccess, cbFailure) => {
+export const resetPassRequest = (params, cbSuccess, cbFailure) => {
   return {
     type: TYPES.RESET_PASSWORD_REQUEST,
-    route,
     params,
     cbSuccess,
     cbFailure,
   };
 };
 
-//logout request
+//Logout Action
 export const logoutRequset = (params, callBack) => {
   return {
     type: TYPES.LOGOUT_REQUEST_REQUEST,

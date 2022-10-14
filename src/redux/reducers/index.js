@@ -1,11 +1,13 @@
 import {combineReducers} from 'redux';
-import authReducer from './auth-reducers/auth-reducer';
+import authReducer from './auth-reducer/auth-reducer';
+import profileReducer from './profile-reducer/profile-reducer';
 
 import * as types from '../actions/types/auth_types';
 
 const root_reducer = combineReducers({
   /* your app’s top-level reducers */
   auth: authReducer,
+  profile: profileReducer,
 });
 
 const rootReducer = (state, action) => {

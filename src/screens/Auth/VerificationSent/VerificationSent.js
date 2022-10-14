@@ -4,7 +4,7 @@ import {WP, appImages} from '../../../shared/exporter';
 import {Spacer, AppButton} from '../../../components';
 import styles from './styles';
 
-const VerificationSent = ({navigation}) => {
+const VerificationSent = ({navigation, route}) => {
   return (
     <ImageBackground style={styles.rootContainer} source={appImages.app_bg}>
       <Spacer androidVal={WP('14')} iOSVal={WP('14')} />
@@ -15,7 +15,9 @@ const VerificationSent = ({navigation}) => {
       <Spacer androidVal={WP('22')} iOSVal={WP('22')} />
       <AppButton
         title="Enter OTP"
-        onPress={() => navigation.navigate('VerifyOTP')}
+        onPress={() =>
+          navigation.navigate('VerifyOTP', {mail: route?.params?.mail})
+        }
       />
     </ImageBackground>
   );

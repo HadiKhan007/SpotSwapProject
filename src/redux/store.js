@@ -10,7 +10,7 @@ import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['auth', 'appReducer'],
+  whitelist: ['auth', 'profile'],
   // blackList: [],
   stateReconciler: autoMergeLevel2,
 };

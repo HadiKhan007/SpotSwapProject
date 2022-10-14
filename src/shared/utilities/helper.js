@@ -1,5 +1,5 @@
+import {createContext, useContext, useState, useEffect} from 'react';
 import NetInfo from '@react-native-community/netinfo';
-import {createContext, useContext, useEffect} from 'react';
 import {appIcons} from '../exporter';
 
 export const checkConnected = () => {
@@ -33,35 +33,42 @@ export const useOnlineStatus = () => {
 
 export const responseValidator = (response, errorMsg) => {
   let errorCode = response;
-  if (errorCode == 401) {
+  if (errorCode === 401) {
+    if (errorMsg) {
+      const msg = errorMsg?.error;
+      return msg;
+    } else {
+      return 'Something went wrong!';
+    }
+  } else if (errorCode === 400) {
     if (errorMsg) {
       const msg = errorMsg?.message;
       return msg;
     } else {
       return 'Something went wrong!';
     }
-  } else if (errorCode == 400) {
+  } else if (errorCode === 404) {
     if (errorMsg) {
       const msg = errorMsg?.message;
       return msg;
     } else {
       return 'Something went wrong!';
     }
-  } else if (errorCode == 404) {
+  } else if (errorCode === 406) {
     if (errorMsg) {
       const msg = errorMsg?.message;
       return msg;
     } else {
       return 'Something went wrong!';
     }
-  } else if (errorCode == 422) {
+  } else if (errorCode === 422) {
     if (errorMsg) {
-      const msg = errorMsg?.message;
+      const msg = errorMsg?.errors;
       return msg;
     } else {
       return 'Something went wrong!';
     }
-  } else if (errorCode == 500) {
+  } else if (errorCode === 500) {
     if (errorMsg) {
       const msg = errorMsg?.message;
       return msg;
@@ -74,9 +81,9 @@ export const responseValidator = (response, errorMsg) => {
 };
 
 export const checkBrand = name => {
-  if (name == 'Visa') {
+  if (name === 'Visa') {
     return appIcons.visa;
-  } else if (name == 'MasterCard') {
+  } else if (name === 'MasterCard') {
     return appIcons.masterCard;
   }
 };
