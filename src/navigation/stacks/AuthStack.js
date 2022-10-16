@@ -3,6 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Login from '../../screens/Auth/Login';
 import Register from '../../screens/Auth/Register';
+import SocialRegister from '../../screens/Auth/SocialRegister';
 import AddCarInfo from '../../screens/Auth/AddCarInfo';
 import AddCarPics from '../../screens/Auth/AddCarPics';
 import Welcome from '../../screens/Auth/Welcome';
@@ -23,6 +24,7 @@ function AuthStack(props) {
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="SocialRegister" component={SocialRegister} />
       <Stack.Screen name="AddCarInfo" component={AddCarInfo} />
       <Stack.Screen name="AddCarPics" component={AddCarPics} />
       <Stack.Screen name="Welcome" component={Welcome} />

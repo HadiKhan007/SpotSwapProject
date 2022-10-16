@@ -28,7 +28,7 @@ function* login(params) {
         type: types.LOGIN_REQUEST_SUCCESS,
         payload: res,
       });
-      AsyncStorage.setItem('usertoken', res?.user?.auth_token);
+      AsyncStorage.setItem('userToken', res?.user?.token);
       params?.cbSuccess(res);
     }
   } catch (error) {
@@ -53,7 +53,7 @@ function* socialLoginUser(params) {
         type: types.SOCIAL_LOGIN_REQUEST_SUCCESS,
         payload: res,
       });
-      AsyncStorage.setItem('usertoken', res?.user?.auth_token);
+      AsyncStorage.setItem('userToken', res?.user?.token);
       params?.cbSuccess(res);
     } else {
       yield put({
@@ -62,7 +62,6 @@ function* socialLoginUser(params) {
       });
     }
   } catch (error) {
-    console.log('Error is ==> ', error);
     yield put({
       type: types.SOCIAL_LOGIN_REQUEST_FAILURE,
       payload: null,
@@ -132,7 +131,7 @@ export function* getCarSpecsRequest() {
 }
 function* getCarSpecs(params) {
   try {
-    const res = yield carSpecs(params?.params);
+    const res = yield carSpecs();
     if (res) {
       yield put({
         type: types.GET_CAR_SPECS_REQUEST_SUCCESS,
@@ -141,7 +140,6 @@ function* getCarSpecs(params) {
       params?.cbSuccess(res);
     }
   } catch (error) {
-    console.log('Error is ==> ', error);
     yield put({
       type: types.GET_CAR_SPECS_REQUEST_FAILURE,
       payload: null,
@@ -166,7 +164,6 @@ function* createCarProfile(params) {
       params?.cbSuccess(res);
     }
   } catch (error) {
-    console.log('Error is ==> ', error);
     yield put({
       type: types.CAR_PROFILE_REQUEST_FAILURE,
       payload: null,
@@ -191,7 +188,6 @@ function* forgot(params) {
       params?.cbSuccess(res);
     }
   } catch (error) {
-    console.log('Error is ==> ', error);
     yield put({
       type: types.FORGOT_PASSWORD_FAILURE,
       payload: null,
@@ -216,7 +212,6 @@ function* verifyOTP(params) {
       params?.cbSuccess(res);
     }
   } catch (error) {
-    console.log('Error is ==> ', error);
     yield put({
       type: types.OTP_VERIFY_FAILURE,
       payload: null,
@@ -241,7 +236,6 @@ function* resend_otp(params) {
       params?.cbSuccess(res);
     }
   } catch (error) {
-    console.log('Error is ==> ', error);
     yield put({
       type: types.RESEND_OTP_FAILURE,
       payload: null,
@@ -266,7 +260,6 @@ function* resetPass(params) {
       params?.cbSuccess(res);
     }
   } catch (error) {
-    console.log('Error is ==> ', error);
     yield put({
       type: types.RESET_PASSWORD_FAILURE,
       payload: null,

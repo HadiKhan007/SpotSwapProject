@@ -13,6 +13,12 @@ export const registerFormFields = {
   confirmPassword: '',
 };
 
+export const socialRegisterFormFields = {
+  name: '',
+  email: '',
+  number: '',
+};
+
 export const carInfoFormFields = {
   brand: '',
   model: '',
@@ -99,6 +105,18 @@ export const registerVS = yup.object().shape({
     .min(6, 'Password must be at least 6 characters')
     .required('Confirm Password Required')
     .oneOf([yup.ref('password'), null], 'New Password does not match'),
+});
+
+export const socialRegisterVS = yup.object().shape({
+  name: yup.string().required('Name Required').label('name'),
+  email: yup
+    .string()
+    .required('Email Required')
+    .email('Please provide a valid email address'),
+  number: yup
+    .number()
+    .typeError('Invalid contact number')
+    .required('Contact Number Required'),
 });
 
 export const carInfoVS = yup.object().shape({

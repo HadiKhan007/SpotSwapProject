@@ -46,8 +46,8 @@ export const DropdownPicker = ({
             />
           );
         }}
-        rowTextForSelection={item => item}
-        buttonTextAfterSelection={selectedItem => selectedItem}
+        rowTextForSelection={item => item?.name}
+        buttonTextAfterSelection={selectedItem => selectedItem?.name}
       />
       {errorMessage ? (
         <Text style={styles.errorTxtStyle}>{errorMessage}</Text>

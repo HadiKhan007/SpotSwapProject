@@ -135,11 +135,10 @@ const Login = ({navigation}) => {
         params,
         res => {
           setIsLoading(false);
-          console.log('Res is ==> ', res);
           if (res?.user?.profile_complete) {
             navigation.navigate('App');
           } else {
-            navigation.navigate('AddCarInfo');
+            navigation.navigate('SocialRegister', {item: res?.user});
           }
         },
         err => {

@@ -34,6 +34,8 @@ export {
   updateCarInfoFormFields,
   quickChatVS,
   quickChatFormFields,
+  socialRegisterVS,
+  socialRegisterFormFields,
 } from './utilities/validations';
 export {
   StatusBarHeight,

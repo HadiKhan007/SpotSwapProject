@@ -48,7 +48,7 @@ const Register = ({navigation}) => {
     const params = new FormData();
     params.append('name', values?.name);
     params.append('email', values?.email);
-    params.append('contact', values?.number);
+    params.append('contact', countryCode + values?.number);
     params.append('password', values?.password);
     dispatch(
       signUpRequest(
@@ -109,7 +109,6 @@ const Register = ({navigation}) => {
           } else {
             AccessToken.getCurrentAccessToken()
               .then(token => {
-                console.log('Token ==> ', token?.accessToken);
                 handleSocialLogin('facebook', token?.accessToken);
               })
               .catch(error => console.log('error', error));
@@ -135,11 +134,10 @@ const Register = ({navigation}) => {
         params,
         res => {
           setIsLoading(false);
-          console.log('Res is ==> ', res);
           if (res?.user?.profile_complete) {
             navigation.navigate('App');
           } else {
-            navigation.navigate('AddCarInfo');
+            navigation.navigate('SocialRegister', {item: res?.user});
           }
         },
         err => {

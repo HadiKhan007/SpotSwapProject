@@ -28,6 +28,7 @@ export const profileUpdate = async params => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'multipart/form-data',
+      Authorization: `Bearer ${await GetToken()}`,
     },
   });
   return res.data;
@@ -43,10 +44,10 @@ export const registerUser = async params => {
   return res.data;
 };
 
-export const carSpecs = async params => {
-  const res = await axios.post(`${BASE_URL}${ENDPOINTS.CAR_SPECS}`, params, {
+export const carSpecs = async () => {
+  const res = await axios.get(`${BASE_URL}${ENDPOINTS.CAR_SPECS}`, {
     headers: {
-      'Content-Type': 'multipart/form-data',
+      Accept: 'application/json',
     },
   });
   return res.data;
@@ -55,6 +56,7 @@ export const carSpecs = async params => {
 export const carProfile = async params => {
   const res = await axios.post(`${BASE_URL}${ENDPOINTS.CAR_PROFILE}`, params, {
     headers: {
+      Accept: 'application/json',
       'Content-Type': 'multipart/form-data',
     },
   });
@@ -100,6 +102,18 @@ export const resetPassword = async params => {
   });
   return res.data;
 };
+
+export const pagesReq = async params => {
+  const res = await axios.post(`${BASE_URL}conversations/logout`, params, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'multipart/form-data',
+      auth_token: await GetToken(),
+    },
+  });
+  return res.data;
+};
+
 
 export const logoutUser = async params => {
   const res = await axios.post(`${BASE_URL}conversations/logout`, params, {

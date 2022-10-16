@@ -63,7 +63,6 @@ export const quickChats = async params => {
   const res = await axios.get(`${BASE_URL}${ENDPOINTS.QUICK_CHATS}`, params, {
     headers: {
       Accept: 'application/json',
-      'Content-Type': 'multipart/form-data',
       auth_token: await GetToken(),
     },
   });
@@ -108,10 +107,10 @@ export const removeChat = async params => {
 
 //Get static pages
 export const staticPagesRes = async endpoint => {
-  const res = await axios.get(`${BASE_URL}static_page/${endpoint}`, {
+  const res = await axios.get(`${BASE_URL}static_pages/${endpoint}`, {
     headers: {
       Accept: 'application/json',
-      auth_token: await GetToken(),
+      Authorization: await GetToken(),
     },
   });
   return res.data;
