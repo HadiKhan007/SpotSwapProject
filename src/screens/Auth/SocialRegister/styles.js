@@ -10,24 +10,22 @@ import {
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-    paddingHorizontal: WP('5'),
     backgroundColor: colors.b1,
+    paddingHorizontal: WP('5'),
     paddingTop: StatusBarHeight,
   },
-  titleTxtStyle: {
-    color: colors.white,
-    paddingTop: WP('5'),
-    fontSize: size.title,
-    fontFamily: family.SFProText_SemiBold,
-  },
-  contentContainer: {
-    marginTop: WP('3'),
-    paddingBottom: WP('1.5'),
-  },
-  txtStyle: {
+  regTxtStyle: {
+    marginTop: WP('5'),
+    textAlign: 'right',
     color: colors.white,
     fontSize: size.normal,
-    fontFamily: family.SFProText_Medium,
+    fontFamily: family.SFProText_Regular,
+  },
+  logoStyle: {
+    height: WP('22'),
+    width: WP('51.5'),
+    alignSelf: 'center',
+    marginTop: WP('6.5'),
   },
 });
 

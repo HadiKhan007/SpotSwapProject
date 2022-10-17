@@ -175,6 +175,29 @@ const faq = [
   },
 ];
 
+const chats = [
+  {
+    id: 1,
+    title: 'Ofcourse!',
+  },
+  {
+    id: 2,
+    title: 'Yes!',
+  },
+  {
+    id: 3,
+    title: 'Yes but kindly wait',
+  },
+  {
+    id: 4,
+    title: 'No, sorry',
+  },
+  {
+    id: 5,
+    title: 'My bad, maybe next time',
+  },
+];
+
 export {
   web_client_id,
   stripe_publishableKey,
@@ -184,4 +207,5 @@ export {
   commonSettings,
   guideLines,
   faq,
+  chats,
 };

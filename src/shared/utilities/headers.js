@@ -10,6 +10,6 @@ export let header = async () => ({
 });
 
 export let GetToken = async () => {
-  const token = await AsyncStorage.getItem('usertoken');
+  const token = await AsyncStorage.getItem('userToken');
   return token;
 };

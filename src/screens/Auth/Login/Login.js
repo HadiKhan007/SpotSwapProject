@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {Formik} from 'formik';
 import {Icon} from 'react-native-elements';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   GoogleSignin,
   statusCodes,
@@ -39,7 +40,7 @@ const Login = ({navigation}) => {
   // redux stuff
   const dispatch = useDispatch(null);
 
-  const handleLogin = values => {
+  const handleLogin = async values => {
     setIsLoading(true);
     const params = new FormData();
     params.append('name', values?.name);
@@ -49,10 +50,11 @@ const Login = ({navigation}) => {
     dispatch(
       loginRequest(
         params,
-        res => {
+        async res => {
           setIsLoading(false);
           formikRef.current?.resetForm();
           if (res?.user?.profile_complete) {
+            await AsyncStorage.setItem('login', 'true');
             navigation.navigate('App');
           } else {
             navigation.navigate('AddCarInfo');
@@ -72,6 +74,7 @@ const Login = ({navigation}) => {
 
   const handleGoogleLogin = async () => {
     try {
+      await GoogleSignin.signOut();
       setIsLoading(true);
       // Get the users ID token
       const {idToken} = await GoogleSignin.signIn();
@@ -133,13 +136,17 @@ const Login = ({navigation}) => {
     dispatch(
       socialLoginRequest(
         params,
-        res => {
+        async res => {
           setIsLoading(false);
-          console.log('Res is ==> ', res);
-          if (res?.user?.profile_complete) {
-            navigation.navigate('App');
+          if (!res?.user?.is_info_complete) {
+            navigation.navigate('SocialRegister', {item: res?.user});
           } else {
-            navigation.navigate('AddCarInfo');
+            if (res?.user?.profile_complete) {
+              await AsyncStorage.setItem('login', 'true');
+              navigation.navigate('App');
+            } else {
+              navigation.navigate('AddCarInfo');
+            }
           }
         },
         err => {
@@ -208,7 +215,6 @@ const Login = ({navigation}) => {
               value={values.password}
               touched={touched.password}
               title="Enter your password"
-              keyboardType="email-address"
               errorMessage={errors.password}
               onSubmitEditing={handleSubmit}
               placeholderTextColor={colors.g2}
@@ -259,15 +265,17 @@ const Login = ({navigation}) => {
                   style={styles.iconStyle}
                 />
               </TouchableOpacity>
-              <TouchableOpacity
-                activeOpacity={0.7}
-                onPress={() => handleAppleLogin()}>
-                <Image
-                  resizeMode="contain"
-                  source={appIcons.appleIcon}
-                  style={styles.iconStyle}
-                />
-              </TouchableOpacity>
+              {Platform.OS === 'ios' && (
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  onPress={() => handleAppleLogin()}>
+                  <Image
+                    resizeMode="contain"
+                    source={appIcons.appleIcon}
+                    style={styles.iconStyle}
+                  />
+                </TouchableOpacity>
+              )}
             </View>
             <Spacer androidVal={WP('21')} iOSVal={WP('21')} />
             <Text style={styles.descTxtStyle}>

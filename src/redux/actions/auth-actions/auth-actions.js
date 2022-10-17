@@ -41,10 +41,9 @@ export const signUpRequest = (params, cbSuccess, cbFailure) => {
 };
 
 //Get Car Specs Action
-export const getCarSpecsRequest = (params, cbSuccess, cbFailure) => {
+export const getCarSpecsRequest = (cbSuccess, cbFailure) => {
   return {
     type: TYPES.GET_CAR_SPECS_REQUEST,
-    params,
     cbSuccess,
     cbFailure,
   };
@@ -101,10 +100,10 @@ export const resetPassRequest = (params, cbSuccess, cbFailure) => {
 };
 
 //Logout Action
-export const logoutRequset = (params, callBack) => {
+export const logoutRequset = (cbSuccess, cbFailure) => {
   return {
     type: TYPES.LOGOUT_REQUEST_REQUEST,
-    params,
-    callBack,
+    cbSuccess,
+    cbFailure,
   };
 };

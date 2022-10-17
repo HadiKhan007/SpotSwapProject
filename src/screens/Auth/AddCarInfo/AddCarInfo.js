@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import {Text, ImageBackground} from 'react-native';
 import {Formik} from 'formik';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
@@ -9,26 +9,58 @@ import {
   carInfoVS,
   carInfoFormFields,
 } from '../../../shared/exporter';
-import {Spacer, AppInput, AppButton, DropdownPicker} from '../../../components';
+import {
+  Spacer,
+  AppInput,
+  AppButton,
+  AppLoader,
+  DropdownPicker,
+} from '../../../components';
 import styles from './styles';
+
+// redux stuff
+import {useDispatch} from 'react-redux';
+import {getCarSpecsRequest} from '../../../redux/actions';
 
 const AddCarInfo = ({navigation}) => {
   const formikRef = useRef();
+  const [carBrands, setCarBrands] = useState(false);
+  const [carModels, setCarModels] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [openBrandPicker, setOpenBrandPicker] = useState(false);
   const [openModelPicker, setOpenModelPicker] = useState(false);
 
-  const handleRegister = values => {
-    formikRef.current?.resetForm();
-    navigation.navigate('AddCarPics');
+  // redux stuff
+  const dispatch = useDispatch(null);
+
+  useEffect(() => {
+    getCarSpecs();
+  }, []);
+
+  const getCarSpecs = () => {
+    setIsLoading(true);
+    dispatch(
+      getCarSpecsRequest(
+        res => {
+          setIsLoading(false);
+          setCarBrands(res?.car_brand);
+        },
+        err => {
+          setIsLoading(false);
+          console.log('Err ==> ', err);
+        },
+      ),
+    );
   };
 
   return (
     <ImageBackground style={styles.rootContainer} source={appImages.app_bg}>
+      <AppLoader loading={isLoading} />
       <Formik
         innerRef={formikRef}
         initialValues={carInfoFormFields}
         onSubmit={values => {
-          handleRegister(values);
+          navigation.navigate('AddCarPics', {item: values});
         }}
         validationSchema={carInfoVS}>
         {({
@@ -45,8 +77,10 @@ const AddCarInfo = ({navigation}) => {
             <Text style={styles.passTxtStyle}>Tell us about{'\n'}your car</Text>
             <Spacer androidVal={WP('8')} iOSVal={WP('8')} />
             <DropdownPicker
+              data={carBrands}
               onSelect={(selectedItem, index) => {
                 setFieldValue('brand', {selectedItem});
+                setCarModels(selectedItem?.car_models);
               }}
               title={'Made / Brand'}
               touched={touched.brand}
@@ -55,10 +89,10 @@ const AddCarInfo = ({navigation}) => {
               defaultButtonText="Choose Brand"
               onFocus={() => setOpenBrandPicker(true)}
               onBlur={() => setOpenBrandPicker(false)}
-              data={['Tesla', 'Toyota', 'Hyundai', 'Isuzu']}
             />
             <Spacer androidVal={WP('3')} iOSVal={WP('3')} />
             <DropdownPicker
+              data={carModels}
               onSelect={(selectedItem, index) => {
                 setFieldValue('model', {selectedItem});
               }}
@@ -69,12 +103,6 @@ const AddCarInfo = ({navigation}) => {
               defaultButtonText="Choose Model"
               onFocus={() => setOpenModelPicker(true)}
               onBlur={() => setOpenModelPicker(false)}
-              data={[
-                'Tesla Model 1',
-                'Tesla Model 2',
-                'Tesla Model 3',
-                'Tesla Model 4',
-              ]}
             />
             <Spacer androidVal={WP('3')} iOSVal={WP('3')} />
             <AppInput

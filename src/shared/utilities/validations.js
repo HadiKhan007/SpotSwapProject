@@ -13,6 +13,12 @@ export const registerFormFields = {
   confirmPassword: '',
 };
 
+export const socialRegisterFormFields = {
+  name: '',
+  email: '',
+  number: '',
+};
+
 export const carInfoFormFields = {
   brand: '',
   model: '',
@@ -101,6 +107,18 @@ export const registerVS = yup.object().shape({
     .oneOf([yup.ref('password'), null], 'New Password does not match'),
 });
 
+export const socialRegisterVS = yup.object().shape({
+  name: yup.string().required('Name Required').label('name'),
+  email: yup
+    .string()
+    .required('Email Required')
+    .email('Please provide a valid email address'),
+  number: yup
+    .number()
+    .typeError('Invalid contact number')
+    .required('Contact Number Required'),
+});
+
 export const carInfoVS = yup.object().shape({
   brand: yup.object().shape().required('Brand Required'),
   model: yup.object().shape().required('Model Required'),
@@ -108,7 +126,7 @@ export const carInfoVS = yup.object().shape({
   color: yup.string().required('Color Required').label('color'),
   plateNumber: yup
     .string()
-    .required('Plate Number Required')
+    .optional('Plate Number Required')
     .label('plateNumber'),
 });
 
@@ -121,7 +139,7 @@ export const updateCarInfoVS = yup.object().shape({
   color: yup.string().required('Color Required').label('color'),
   plateNumber: yup
     .string()
-    .required('Plate Number Required')
+    .optional('Plate Number Required')
     .label('plateNumber'),
 });
 

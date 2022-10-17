@@ -26,7 +26,7 @@ export const HomeHeader = ({
             style={styles.gradientStyle}>
             <TouchableOpacity
               activeOpacity={0.7}
-              onPress={onPress}
+              // onPress={onPress}
               style={styles.rowStyle}>
               <Image
                 source={appIcons.walletIcon}

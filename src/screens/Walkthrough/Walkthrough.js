@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {useIsFocused} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Video from 'react-native-video';
 import {appVideos} from '../../shared/exporter';
 import styles from './styles';
@@ -21,17 +22,19 @@ const Walkthrough = ({navigation}) => {
       <Video
         ref={video}
         repeat={true}
-        source={appVideos.appIntro}
-        resizeMode="contain"
-        style={styles.videoStyle}
         paused={pause}
+        resizeMode="cover"
         playInBackground={false}
+        style={styles.videoStyle}
+        source={appVideos.appIntro}
         ignoreSilentSwitch={'obey'}
       />
       <TouchableOpacity
         activeOpacity={0.7}
         onPress={() => {
-          navigation?.replace('Auth');
+          AsyncStorage.setItem('walkthrough', 'true').then(res => {
+            navigation.replace('Auth');
+          });
         }}
         style={styles.buttonCircle}>
         <Text style={styles.skipTxtStyle}>Skip</Text>

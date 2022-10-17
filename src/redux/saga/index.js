@@ -25,6 +25,7 @@ import {
   addQuickChatRequest,
   editQuickChatRequest,
   removeQuickChatRequest,
+  staticPagesRequest,
 } from './profile-saga/profile-saga';
 
 export function* rootSaga() {
@@ -49,4 +50,5 @@ export function* rootSaga() {
   yield fork(addQuickChatRequest);
   yield fork(editQuickChatRequest);
   yield fork(removeQuickChatRequest);
+  yield fork(staticPagesRequest);
 }

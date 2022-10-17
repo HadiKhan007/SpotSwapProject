@@ -1,12 +1,21 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Text, FlatList, ImageBackground, TouchableOpacity} from 'react-native';
-import {Spacer, AppHeader} from '../../../../components';
+import {Spacer, AppHeader, AppLoader} from '../../../../components';
 import {appImages, WP} from '../../../../shared/exporter';
 import {faq} from '../../../../shared/utilities/constant';
 import styles from './styles';
 
 const FAQs = ({navigation}) => {
-  const [data, setData] = useState(faq);
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setData(faq);
+      setIsLoading(false);
+    }, 1500);
+  }, []);
 
   const handleSelection = ({id}) => {
     let dataArr = data.map(item => {
@@ -41,6 +50,7 @@ const FAQs = ({navigation}) => {
 
   return (
     <ImageBackground style={styles.rootContainer} source={appImages.app_bg}>
+      <AppLoader loading={isLoading} />
       <AppHeader title="FAQs" onBackPress={() => navigation.goBack()} />
       <Spacer androidVal={WP('7')} iOSVal={WP('7')} />
       <FlatList

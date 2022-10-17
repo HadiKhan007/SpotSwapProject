@@ -24,6 +24,7 @@ const AppInput = ({
   onBlur,
   touched,
   onSelect,
+  editable,
   countryCode,
   placeholder,
   countryInput,
@@ -82,6 +83,7 @@ const AppInput = ({
         <TextInput
           value={value}
           onBlur={onBlur}
+          editable={editable}
           placeholder={placeholder}
           selectionColor={colors.s4}
           secureTextEntry={showPass}
