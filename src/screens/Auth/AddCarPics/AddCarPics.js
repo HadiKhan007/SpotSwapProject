@@ -43,7 +43,9 @@ const AddCarPics = ({navigation, route}) => {
     params.append('car_model_id', values?.model?.selectedItem?.id);
     params.append('length', values?.length);
     params.append('color', values?.color);
-    params.append('plate_number', values?.plateNumber);
+    if (values?.plate_number) {
+      params.append('plate_number', values?.plateNumber);
+    }
     carImages?.forEach(item => {
       if (item?.img) {
         params.append('photos[]', {

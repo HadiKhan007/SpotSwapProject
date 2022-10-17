@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
+import {useSelector} from 'react-redux';
 import {
   WP,
   size,
@@ -18,44 +19,21 @@ import {
 } from '../../shared/exporter';
 import {drawerList} from '../../shared/utilities/constant';
 
-// redux stuff
-import {useDispatch, useSelector} from 'react-redux';
-import {logoutRequest} from '../../redux/actions';
-
 const DrawerHeader = ({navigation}) => {
-  const dispatch = useDispatch(null);
-  // const {profileInfo} = useSelector(state => state?.profile);
-  // const {access_token} = useSelector(state => state?.auth);
-
-  const handleLogout = () => {
-    navigation.replace('Auth');
-    // dispatch(
-    //   logoutRequest(
-    //     access_token,
-    //     res => {
-    //       console.log('Res is ==> ', res);
-    //       navigation.replace('Auth');
-    //     },
-    //     err => {
-    //       console.log('Logout err ==> ', err);
-    //     },
-    //   ),
-    // );
-  };
+  const {userInfo} = useSelector(state => state?.auth);
 
   return (
     <SafeAreaView style={styles.mainContainer}>
-      <View style={styles.headerView}>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        style={styles.headerView}
+        onPress={() => navigation.navigate('Profile')}>
         <Image source={appImages.car} style={styles.imgStyle} />
         <View>
-          <Text style={styles.nameTxtStyle}>Lilac macbeth</Text>
-          <Text
-            style={styles.profileTxtStyle}
-            onPress={() => navigation.navigate('Profile')}>
-            Profile
-          </Text>
+          <Text style={styles.nameTxtStyle}>{userInfo?.name}</Text>
+          <Text style={styles.profileTxtStyle}>Profile</Text>
         </View>
-      </View>
+      </TouchableOpacity>
       <View style={styles.dividerView} />
       {drawerList.map((item, i) => (
         <>

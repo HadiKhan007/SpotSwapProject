@@ -31,11 +31,10 @@ const TermsConditions = ({navigation}) => {
     setIsLoading(true);
     dispatch(
       staticPagesRequest(
-        'faqs',
+        'terms&condition',
         res => {
           setIsLoading(false);
-          setTerms(res);
-          console.log('Res is kl ==> ', res);
+          setTerms(res?.page?.content);
         },
         err => {
           setIsLoading(false);
@@ -52,7 +51,11 @@ const TermsConditions = ({navigation}) => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <Text style={styles.titleTxtStyle}>Terms &{'\n'}Condition</Text>
         <View style={styles.contentContainer}>
-          <RenderHtml contentWidth={scrWidth} source={source} />
+          {terms === '' ? (
+            <Text style={styles.txtStyle} />
+          ) : (
+            <RenderHtml contentWidth={scrWidth} source={{html: terms}} />
+          )}
         </View>
       </ScrollView>
     </ImageBackground>

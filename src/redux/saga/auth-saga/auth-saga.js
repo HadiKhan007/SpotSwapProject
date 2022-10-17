@@ -275,17 +275,18 @@ export function* logoutRequestSaga() {
 }
 function* logout(params) {
   try {
-    const res = yield logoutUser(params?.params);
+    const res = yield logoutUser();
     yield put({
       type: types.LOGOUT_REQUEST_SUCCESS,
       payload: params,
     });
     params?.cbSuccess(res);
   } catch (error) {
-    console.log('Error is ==> ', error);
     yield put({
-      type: types.LOGOUT_REQUEST_FAILURE,
-      payload: null,
+      type: types.LOGOUT_REQUEST_SUCCESS,
+      payload: params,
     });
+    let msg = responseValidator(error?.response?.status, error?.response?.data);
+    params?.cbSuccess(msg);
   }
 }

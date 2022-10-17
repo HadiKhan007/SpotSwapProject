@@ -9,17 +9,17 @@ import {
 import {SwipeListView} from 'react-native-swipe-list-view';
 import {Spacer, AppHeader} from '../../../../components';
 import {appIcons, appImages, WP} from '../../../../shared/exporter';
-import {faq} from '../../../../shared/utilities/constant';
+import {chats} from '../../../../shared/utilities/constant';
 import styles from './styles';
 
 const QuickChats = ({navigation}) => {
-  const [chat, setChat] = useState(faq);
+  const [chat] = useState(chats);
   const [isRowOpen, setIsRowOpen] = useState(false);
 
   const renderItem = ({item}) => {
     return (
       <View key={item?.id} style={styles.itemContainer}>
-        <Text style={styles.quesTxtStyle}>{item?.ques}</Text>
+        <Text style={styles.quesTxtStyle}>{item?.title}</Text>
       </View>
     );
   };
@@ -91,6 +91,8 @@ const QuickChats = ({navigation}) => {
         data={chat}
         extraData={chat}
         renderItem={renderItem}
+        disableLeftSwipe
+        disableRightSwipe
         leftOpenValue={0}
         rightOpenValue={-115}
         previewOpenValue={-40}

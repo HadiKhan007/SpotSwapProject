@@ -8,7 +8,7 @@ export const userProfile = async params => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'multipart/form-data',
-      auth_token: await GetToken(),
+      Authorization: `Bearer ${await GetToken()}`,
     },
   });
   return res.data;
@@ -23,7 +23,7 @@ export const updateUserProfile = async params => {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'multipart/form-data',
-        auth_token: await GetToken(),
+        Authorization: `Bearer ${await GetToken()}`,
       },
     },
   );
@@ -36,7 +36,7 @@ export const carInfo = async params => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'multipart/form-data',
-      auth_token: await GetToken(),
+      Authorization: `Bearer ${await GetToken()}`,
     },
   });
   return res.data;
@@ -51,7 +51,7 @@ export const carInfoUpdate = async params => {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'multipart/form-data',
-        auth_token: await GetToken(),
+        Authorization: `Bearer ${await GetToken()}`,
       },
     },
   );
@@ -63,7 +63,7 @@ export const quickChats = async params => {
   const res = await axios.get(`${BASE_URL}${ENDPOINTS.QUICK_CHATS}`, params, {
     headers: {
       Accept: 'application/json',
-      auth_token: await GetToken(),
+      Authorization: `Bearer ${await GetToken()}`,
     },
   });
   return res.data;
@@ -75,7 +75,7 @@ export const addChat = async params => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'multipart/form-data',
-      auth_token: await GetToken(),
+      Authorization: `Bearer ${await GetToken()}`,
     },
   });
   return res.data;
@@ -87,7 +87,7 @@ export const editChat = async params => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'multipart/form-data',
-      auth_token: await GetToken(),
+      Authorization: `Bearer ${await GetToken()}`,
     },
   });
   return res.data;
@@ -99,7 +99,7 @@ export const removeChat = async params => {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'multipart/form-data',
-      auth_token: await GetToken(),
+      Authorization: `Bearer ${await GetToken()}`,
     },
   });
   return res.data;

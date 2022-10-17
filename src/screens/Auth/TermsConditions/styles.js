@@ -23,7 +23,11 @@ const styles = StyleSheet.create({
   contentContainer: {
     marginTop: WP('3'),
     paddingBottom: WP('1.5'),
-    paddingHorizontal: WP('4'),
+  },
+  txtStyle: {
+    color: colors.white,
+    fontSize: size.normal,
+    fontFamily: family.SFProText_Medium,
   },
 });
 

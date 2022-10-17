@@ -90,7 +90,6 @@ const ResetPassword = ({navigation, route}) => {
               blurOnSubmit={false}
               value={values.password}
               touched={touched.password}
-              keyboardType="email-address"
               errorMessage={errors.password}
               onSubmitEditing={handleSubmit}
               title="Enter your new password"
@@ -117,7 +116,6 @@ const ResetPassword = ({navigation, route}) => {
               title="Confirm new password"
               value={values.confirmPassword}
               touched={touched.confirmPassword}
-              keyboardType="email-address"
               errorMessage={errors.confirmPassword}
               onSubmitEditing={handleSubmit}
               placeholderTextColor={colors.g2}

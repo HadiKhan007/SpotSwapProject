@@ -31,7 +31,7 @@ const VerifyOTP = ({navigation, route}) => {
   const handleVerifyOTP = () => {
     if (value === '') {
       Toast.show('Please enter an OTP.', Toast.SHORT, ['UIAlertController']);
-    } else if (value.length < 4) {
+    } else if (value.length < 6) {
       Toast.show('Please enter complete OTP.', Toast.SHORT, [
         'UIAlertController',
       ]);
@@ -110,7 +110,7 @@ const VerifyOTP = ({navigation, route}) => {
         <CodeField
           ref={ref}
           value={value}
-          cellCount={4}
+          cellCount={6}
           {...codeFieldProps}
           keyboardType="number-pad"
           textContentType="oneTimeCode"

@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {Spacer, AppHeader, AppLoader} from '../../../../components';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {appImages, WP} from '../../../../shared/exporter';
 import {
   guideLines,
@@ -26,29 +27,25 @@ const Settings = ({navigation}) => {
   const dispatch = useDispatch(null);
 
   const handleLogout = values => {
-    navigation.replace('Auth');
-    // setIsLoading(true);
-    // const params = new FormData();
-    // params.append('fcm_token', 'fcm_token');
-    // dispatch(
-    //   logoutRequset(
-    //     params,
-    //     res => {
-    //       console.log('Res ==> ', res);
-    //       setIsLoading(false);
-    //       navigation.replace('Auth');
-    //     },
-    //     err => {
-    //       console.log('Err ==> ', err);
-    //       setIsLoading(false);
-    //       Alert.alert('Logout Fail', err, [
-    //         {
-    //           text: 'OK',
-    //         },
-    //       ]);
-    //     },
-    //   ),
-    // );
+    setIsLoading(true);
+    dispatch(
+      logoutRequset(
+        async res => {
+          setIsLoading(false);
+          await AsyncStorage.setItem('login', 'false');
+          navigation.replace('Auth');
+        },
+        err => {
+          console.log('Err ==> ', err);
+          setIsLoading(false);
+          Alert.alert('Logout Fail', err, [
+            {
+              text: 'OK',
+            },
+          ]);
+        },
+      ),
+    );
   };
 
   const Row = ({item}) => {
@@ -72,7 +69,7 @@ const Settings = ({navigation}) => {
 
   return (
     <ImageBackground style={styles.rootContainer} source={appImages.app_bg}>
-      <AppLoader loading={isLoading} />
+      {/* <AppLoader loading={isLoading} /> */}
       <AppHeader title="Settings" onBackPress={() => navigation.goBack()} />
       <Spacer androidVal={WP('7')} iOSVal={WP('7')} />
       <ScrollView showsVerticalScrollIndicator={false}>

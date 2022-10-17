@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {Formik} from 'formik';
 import {Icon} from 'react-native-elements';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   GoogleSignin,
   statusCodes,
@@ -48,8 +49,8 @@ const Register = ({navigation}) => {
     const params = new FormData();
     params.append('name', values?.name);
     params.append('email', values?.email);
-    params.append('contact', countryCode + values?.number);
     params.append('password', values?.password);
+    params.append('contact', countryCode + values?.number);
     dispatch(
       signUpRequest(
         params,
@@ -132,12 +133,17 @@ const Register = ({navigation}) => {
     dispatch(
       socialLoginRequest(
         params,
-        res => {
+        async res => {
           setIsLoading(false);
-          if (res?.user?.profile_complete) {
-            navigation.navigate('App');
-          } else {
+          if (!res?.user?.is_info_complete) {
             navigation.navigate('SocialRegister', {item: res?.user});
+          } else {
+            if (res?.user?.profile_complete) {
+              await AsyncStorage.setItem('login', 'true');
+              navigation.navigate('App');
+            } else {
+              navigation.navigate('AddCarInfo');
+            }
           }
         },
         err => {
@@ -254,7 +260,6 @@ const Register = ({navigation}) => {
               value={values.password}
               touched={touched.password}
               title="Enter password"
-              keyboardType="email-address"
               errorMessage={errors.password}
               onSubmitEditing={handleSubmit}
               placeholderTextColor={colors.g2}
@@ -280,7 +285,6 @@ const Register = ({navigation}) => {
               title="Confirm password"
               value={values.confirmPassword}
               touched={touched.confirmPassword}
-              keyboardType="email-address"
               errorMessage={errors.confirmPassword}
               onSubmitEditing={handleSubmit}
               placeholderTextColor={colors.g2}
@@ -324,15 +328,17 @@ const Register = ({navigation}) => {
                   style={styles.iconStyle}
                 />
               </TouchableOpacity>
-              <TouchableOpacity
-                activeOpacity={0.7}
-                onPress={() => handleAppleLogin()}>
-                <Image
-                  resizeMode="contain"
-                  source={appIcons.appleIcon}
-                  style={styles.iconStyle}
-                />
-              </TouchableOpacity>
+              {Platform.OS === 'ios' && (
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  onPress={() => handleAppleLogin()}>
+                  <Image
+                    resizeMode="contain"
+                    source={appIcons.appleIcon}
+                    style={styles.iconStyle}
+                  />
+                </TouchableOpacity>
+              )}
             </View>
             <Spacer androidVal={WP('21')} iOSVal={WP('21')} />
             <Text style={styles.descTxtStyle}>

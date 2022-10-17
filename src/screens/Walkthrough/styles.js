@@ -1,21 +1,21 @@
 import {StyleSheet} from 'react-native';
 import {
+  WP,
+  size,
   colors,
   family,
-  platformOrientedCode,
-  scrHeight,
   scrWidth,
-  size,
+  scrHeight,
   StatusBarHeight,
-  WP,
 } from '../../shared/exporter';
 
 const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.b1,
   },
   videoStyle: {
+    flex: 1,
     width: scrWidth,
     height: scrHeight,
     backgroundColor: colors.b1,

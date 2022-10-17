@@ -14,7 +14,7 @@ import {Spacer, AppInput, AppButton, AppLoader} from '../../../components';
 import styles from './styles';
 
 // redux stuff
-import {useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {updateSocialProfileReq} from '../../../redux/actions';
 
 const SocialRegister = ({navigation, route}) => {
@@ -27,20 +27,16 @@ const SocialRegister = ({navigation, route}) => {
 
   // redux stuff
   const dispatch = useDispatch(null);
-  const {userInfo} = useSelector(state => state?.auth);
 
   const handleRegister = values => {
     setIsLoading(true);
     const params = new FormData();
-    params.append('id', userInfo?.id);
     params.append('name', values?.name);
-    params.append('email', values?.email);
     params.append('contact', countryCode + values?.number);
     dispatch(
       updateSocialProfileReq(
         params,
         res => {
-          console.log('Res ==> ', res);
           setIsLoading(false);
           formikRef.current?.resetForm();
           navigation.navigate('AddCarInfo');
@@ -48,7 +44,7 @@ const SocialRegister = ({navigation, route}) => {
         err => {
           console.log('Err ==> ', err);
           setIsLoading(false);
-          Alert.alert('Update Fail', err, [
+          Alert.alert('Update Fail', err[0], [
             {
               text: 'OK',
             },

@@ -103,24 +103,12 @@ export const resetPassword = async params => {
   return res.data;
 };
 
-export const pagesReq = async params => {
-  const res = await axios.post(`${BASE_URL}conversations/logout`, params, {
+export const logoutUser = async () => {
+  const res = await axios.get(`${BASE_URL}${ENDPOINTS.LOGOUT}`, {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'multipart/form-data',
-      auth_token: await GetToken(),
-    },
-  });
-  return res.data;
-};
-
-
-export const logoutUser = async params => {
-  const res = await axios.post(`${BASE_URL}conversations/logout`, params, {
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'multipart/form-data',
-      auth_token: await GetToken(),
+      Authorization: `Bearer ${await GetToken()}`,
     },
   });
   return res.data;

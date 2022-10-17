@@ -2,7 +2,13 @@ import React from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import Modal from 'react-native-modal';
 import {Icon} from 'react-native-elements';
-import {colors, WP, family, size} from '../../shared/exporter';
+import {
+  colors,
+  WP,
+  family,
+  size,
+  platformOrientedCode,
+} from '../../shared/exporter';
 import {AppButton} from '../AppButton/AppButton';
 
 export const AppModal = ({
@@ -59,6 +65,7 @@ const styles = StyleSheet.create({
   iconContainer: {
     width: '100%',
     alignItems: 'flex-end',
+    padding: platformOrientedCode(WP('3'), 0),
   },
   iconStyle: {
     padding: WP('3'),

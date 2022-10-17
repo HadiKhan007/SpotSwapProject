@@ -126,7 +126,7 @@ export const carInfoVS = yup.object().shape({
   color: yup.string().required('Color Required').label('color'),
   plateNumber: yup
     .string()
-    .required('Plate Number Required')
+    .optional('Plate Number Required')
     .label('plateNumber'),
 });
 
@@ -139,7 +139,7 @@ export const updateCarInfoVS = yup.object().shape({
   color: yup.string().required('Color Required').label('color'),
   plateNumber: yup
     .string()
-    .required('Plate Number Required')
+    .optional('Plate Number Required')
     .label('plateNumber'),
 });
 

@@ -4,12 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {appImages, appLogos} from '../../shared/theme/assets';
 import styles from './styles';
 
-// redux stuff
-import {useSelector} from 'react-redux';
-
 const Splash = ({navigation}) => {
-  // redux stuff
-  const {userInfo} = useSelector(state => state?.auth);
 
   useEffect(() => {
     handleAppEntry();
@@ -17,9 +12,10 @@ const Splash = ({navigation}) => {
 
   const handleAppEntry = async () => {
     const isWalkthrough = await AsyncStorage.getItem('walkthrough');
+    const isLogin = await AsyncStorage.getItem('login');
     setTimeout(() => {
-      if (isWalkthrough) {
-        if (userInfo?.token) {
+      if (isWalkthrough === 'true') {
+        if (isLogin === 'true') {
           navigation.replace('App');
         } else {
           navigation.replace('Auth');
@@ -27,7 +23,7 @@ const Splash = ({navigation}) => {
       } else {
         navigation.replace('Walkthrough');
       }
-    }, 500);
+    }, 2000);
   };
 
   return (

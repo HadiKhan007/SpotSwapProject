@@ -22,11 +22,11 @@ const Walkthrough = ({navigation}) => {
       <Video
         ref={video}
         repeat={true}
-        source={appVideos.appIntro}
-        resizeMode="contain"
-        style={styles.videoStyle}
         paused={pause}
+        resizeMode="cover"
         playInBackground={false}
+        style={styles.videoStyle}
+        source={appVideos.appIntro}
         ignoreSilentSwitch={'obey'}
       />
       <TouchableOpacity
