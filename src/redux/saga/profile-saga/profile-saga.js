@@ -118,7 +118,7 @@ export function* getQuickChatsRequest() {
 }
 function* getQuickChats(params) {
   try {
-    const res = yield quickChats(params?.params);
+    const res = yield quickChats();
     if (res) {
       yield put({
         type: types.GET_QUICK_CHATS_REQUEST_SUCCESS,

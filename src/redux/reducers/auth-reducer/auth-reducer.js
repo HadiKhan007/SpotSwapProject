@@ -53,6 +53,7 @@ const authReducer = (state = initialState, actions) => {
         loading: false,
         isSuccess: true,
         isFailure: false,
+        userInfo: payload?.user,
       };
     case TYPES.UPDATE_SOCIAL_PROFILE_REQ_FAILURE:
       return {
@@ -60,6 +61,7 @@ const authReducer = (state = initialState, actions) => {
         loading: false,
         isSuccess: false,
         isFailure: true,
+        userInfo: null,
       };
     case TYPES.SIGNUP_SUCCESS_REQUEST:
       return {

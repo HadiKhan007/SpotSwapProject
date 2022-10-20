@@ -42,7 +42,7 @@ const PrivacyPolicy = ({navigation}) => {
       <AppLoader loading={isLoading} />
       <AppHeader onBackPress={() => navigation.goBack()} />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Text style={styles.titleTxtStyle}>Terms &{'\n'}Condition</Text>
+        <Text style={styles.titleTxtStyle}>Privacy Policy</Text>
         <View style={styles.contentContainer}>
           {policy === '' ? (
             <Text style={styles.txtStyle} />

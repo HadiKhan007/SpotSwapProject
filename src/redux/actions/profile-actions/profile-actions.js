@@ -41,10 +41,9 @@ export const updateCarInfoRequest = (params, cbSuccess, cbFailure) => {
 };
 
 //Get quick chats
-export const getQuickChatsRequest = (params, cbSuccess, cbFailure) => {
+export const getQuickChatsRequest = (cbSuccess, cbFailure) => {
   return {
     type: TYPES.GET_QUICK_CHATS_REQUEST,
-    params,
     cbSuccess,
     cbFailure,
   };

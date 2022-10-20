@@ -91,12 +91,11 @@ function* socialProfileUpdate(params) {
       });
     }
   } catch (error) {
-    console.log('Error is ==> ', error);
     yield put({
       type: types.UPDATE_SOCIAL_PROFILE_REQ_FAILURE,
       payload: null,
     });
-    let msg = responseValidator(error?.response?.status);
+    let msg = responseValidator(error?.response?.status, error?.response?.data);
     params?.cbFailure(msg);
   }
 }

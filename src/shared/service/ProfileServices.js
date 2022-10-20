@@ -59,8 +59,8 @@ export const carInfoUpdate = async params => {
 };
 
 // Get quick chat
-export const quickChats = async params => {
-  const res = await axios.get(`${BASE_URL}${ENDPOINTS.QUICK_CHATS}`, params, {
+export const quickChats = async () => {
+  const res = await axios.get(`${BASE_URL}${ENDPOINTS.QUICK_CHATS}`, {
     headers: {
       Accept: 'application/json',
       Authorization: `Bearer ${await GetToken()}`,

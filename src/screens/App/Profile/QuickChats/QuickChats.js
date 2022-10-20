@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Text,
   View,
@@ -7,31 +7,59 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {SwipeListView} from 'react-native-swipe-list-view';
-import {Spacer, AppHeader} from '../../../../components';
+import {Spacer, AppHeader, AppLoader} from '../../../../components';
 import {appIcons, appImages, WP} from '../../../../shared/exporter';
 import {chats} from '../../../../shared/utilities/constant';
 import styles from './styles';
 
+// redux stuff
+import {useDispatch} from 'react-redux';
+import {getQuickChatsRequest} from '../../../../redux/actions';
+
 const QuickChats = ({navigation}) => {
-  const [chat] = useState(chats);
-  const [isRowOpen, setIsRowOpen] = useState(false);
+  const [chats, setChats] = useState([]);
+  const [rowId, setRowId] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  // redux stuff
+  const dispatch = useDispatch(null);
+
+  useEffect(() => {
+    getCarSpecs();
+  }, []);
+
+  const getCarSpecs = () => {
+    setIsLoading(true);
+    dispatch(
+      getQuickChatsRequest(
+        res => {
+          console.log('Res is ==> ', res?.chats);
+          setIsLoading(false);
+          setChats(res?.chats);
+        },
+        err => {
+          setIsLoading(false);
+          console.log('Err ==> ', err);
+        },
+      ),
+    );
+  };
 
   const renderItem = ({item}) => {
     return (
       <View key={item?.id} style={styles.itemContainer}>
-        <Text style={styles.quesTxtStyle}>{item?.title}</Text>
+        <Text style={styles.quesTxtStyle}>{item?.message}</Text>
       </View>
     );
   };
 
   const closeRow = (map, key) => {
-    setIsRowOpen(false);
+    setRowId('');
     map && map[key] && map[key].closeRow();
   };
 
   const onRowDidOpen = rowKey => {
-    setIsRowOpen(true);
-    console.log('This row opened', rowKey);
+    setRowId(rowKey);
   };
 
   const handleDelete = () => {};
@@ -41,7 +69,7 @@ const QuickChats = ({navigation}) => {
   };
 
   const renderHiddenItem = (data, rowMap) => {
-    return isRowOpen ? (
+    return data?.item?.id === rowId ? (
       <View style={styles.backBtnsContainer}>
         <TouchableOpacity
           activeOpacity={0.7}
@@ -79,6 +107,7 @@ const QuickChats = ({navigation}) => {
 
   return (
     <ImageBackground style={styles.rootContainer} source={appImages.app_bg}>
+      <AppLoader loading={isLoading} />
       <AppHeader
         rightIcon
         title="Quick Chat"
@@ -88,11 +117,9 @@ const QuickChats = ({navigation}) => {
       <Spacer androidVal={WP('7')} iOSVal={WP('7')} />
       <SwipeListView
         useFlatList
-        data={chat}
-        extraData={chat}
+        data={chats}
+        extraData={chats}
         renderItem={renderItem}
-        disableLeftSwipe
-        disableRightSwipe
         leftOpenValue={0}
         rightOpenValue={-115}
         previewOpenValue={-40}

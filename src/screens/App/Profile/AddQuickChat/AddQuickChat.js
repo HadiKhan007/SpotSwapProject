@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react';
-import {View, ImageBackground} from 'react-native';
+import {View, Alert, ImageBackground} from 'react-native';
 import {Formik} from 'formik';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {
@@ -15,20 +15,48 @@ import {
   AppModal,
   AppButton,
   AppHeader,
+  AppLoader,
 } from '../../../../components';
 import styles from './styles';
 
+// redux stuff
+import {useDispatch} from 'react-redux';
+import {addQuickChatRequest} from '../../../../redux/actions';
+
 const AddQuickChat = ({navigation}) => {
   const formikRef = useRef();
+  const [isLoading, setIsLoading] = useState(false);
   const [showAppModal, setShowAppModal] = useState(false);
 
+  // redux stuff
+  const dispatch = useDispatch(null);
+
   const handleAddQuickChat = values => {
-    setShowAppModal(true);
-    // formikRef.current?.resetForm();
+    setIsLoading(true);
+    const params = new FormData();
+    params.append('message', values?.chat);
+    dispatch(
+      addQuickChatRequest(
+        params,
+        res => {
+          setIsLoading(false);
+          setTimeout(() => {
+            setShowAppModal(true);
+            formikRef.current?.resetForm();
+          }, 1000);
+        },
+        err => {
+          setIsLoading(false);
+          console.log('Error ==> ', err);
+          Alert.alert('Something went wrong!');
+        },
+      ),
+    );
   };
 
   return (
     <ImageBackground style={styles.rootContainer} source={appImages.app_bg}>
+      <AppLoader loading={isLoading} />
       <AppHeader
         title="Add Quick Chat"
         onBackPress={() => navigation.goBack()}
@@ -76,7 +104,10 @@ const AddQuickChat = ({navigation}) => {
         <AppModal
           show={showAppModal}
           title={'Quick Chat\nSuccessfully Added'}
-          onPressHide={() => setShowAppModal(false)}
+          onPressHide={() => {
+            setShowAppModal(false);
+            navigation.navigate('QuickChats');
+          }}
         />
       )}
     </ImageBackground>
