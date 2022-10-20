@@ -219,6 +219,7 @@ const Login = ({navigation}) => {
               onSubmitEditing={handleSubmit}
               placeholderTextColor={colors.g2}
               placeholder="Enter your password"
+              underlineColorAndroid="transparent"
               onChangeText={handleChange('password')}
               onBlur={() => setFieldTouched('password')}
               rightIcon={
@@ -233,7 +234,10 @@ const Login = ({navigation}) => {
             <TouchableOpacity activeOpacity={0.7} onPress={() => {}}>
               <Text
                 style={styles.forgotTxtStyle}
-                onPress={() => navigation.navigate('ForgotPassword')}>
+                onPress={() => {
+                  formikRef.current?.resetForm();
+                  navigation.navigate('ForgotPassword');
+                }}>
                 forgot your password
               </Text>
             </TouchableOpacity>
