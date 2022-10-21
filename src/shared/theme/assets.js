@@ -38,6 +38,10 @@ export const appIcons = {
   logoutIcon: require('../../assets/icons/logout_icon.png'),
   delIcon: require('../../assets/icons/del_icon.png'),
   editIcon: require('../../assets/icons/edit_icon.png'),
+  gallery: require('../../assets/icons/gallery.png'),
+  sendbutton: require('../../assets/icons/sendbtn.png'),
+
+
 };
 
 export const appSvgs = {

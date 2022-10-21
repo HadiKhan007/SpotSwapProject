@@ -47,6 +47,7 @@ const DrawerNav = ({route}) => {
         component={ProfileStack}
         options={{headerShown: false}}
       />
+      
     </Drawer.Navigator>
   );
 };

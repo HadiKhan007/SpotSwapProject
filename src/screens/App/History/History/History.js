@@ -1,15 +1,28 @@
 import React from 'react';
-import {Text, ScrollView, ImageBackground} from 'react-native';
-import {AppHeader} from '../../../../components';
-import {appImages} from '../../../../shared/exporter';
+import {ScrollView, ImageBackground, FlatList} from 'react-native';
+import {HistoryCard, HomeHeader} from '../../../../components';
+import {appImages, History_List} from '../../../../shared/exporter';
 import styles from './styles';
 
 const History = ({navigation}) => {
+  const renderCard = ({item, index}) => (
+    <HistoryCard
+      PlaceName={item.PlaceName}
+      price={item.price}
+      time={item.time}
+      monthDate={item.monthDate}
+      onPress={() => navigation.navigate('HistoryDetail')}
+    />
+  );
   return (
     <ImageBackground style={styles.rootContainer} source={appImages.app_bg}>
-      <AppHeader onBackPress={() => navigation.goBack()} />
+      <HomeHeader title="Histrory" />
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Text style={styles.titleTxtStyle}>History</Text>
+        <FlatList
+          data={History_List}
+          renderItem={renderCard}
+          keyExtractor={(index, item) => index + item.toString()}
+        />
       </ScrollView>
     </ImageBackground>
   );

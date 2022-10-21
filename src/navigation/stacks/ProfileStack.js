@@ -11,6 +11,10 @@ import AddQuickChat from '../../screens/App/Profile/AddQuickChat';
 import EditQuickChat from '../../screens/App/Profile/EditQuickChat';
 import PrivacyPolicy from '../../screens/Auth/PrivacyPolicy';
 import TermsConditions from '../../screens/Auth/TermsConditions';
+import Support from '../../screens/App/Profile/Support/Support/Support';
+import CreateTicket from '../../screens/App/Profile/Support/CreateTicket';
+import SentSuccess from '../../screens/App/Profile/Support/SentSuccess';
+import SupportChat from '../../screens/App/Profile/Support/SupportChat';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +33,10 @@ function ProfileStack(props) {
       <Stack.Screen name="EditQuickChat" component={EditQuickChat} />
       <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
       <Stack.Screen name="TermsConditions" component={TermsConditions} />
+      <Stack.Screen name="Support" component={Support} />
+      <Stack.Screen name="CreateTicket" component={CreateTicket} />
+      <Stack.Screen name="SentSuccess" component={SentSuccess} />
+      <Stack.Screen name="SupportChat" component={SupportChat} />
     </Stack.Navigator>
   );
 }

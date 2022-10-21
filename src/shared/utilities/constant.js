@@ -197,7 +197,84 @@ const chats = [
     title: 'My bad, maybe next time',
   },
 ];
-
+const History_List = [
+  {
+    id: 1,
+    PlaceName: 'Washington DC, USA',
+    price: '$11.00',
+    time: '10:00AM',
+    monthDate: 'July 25, 2022',
+    onPress: () => {},
+  },
+  {
+    id: 2,
+    PlaceName: 'Mall Parking',
+    price: '$11.00',
+    time: '10:00AM',
+    monthDate: 'July 25, 2022',
+    onPress: () => {},
+  },
+  {
+    id: 3,
+    PlaceName: 'Alley Park Parking',
+    price: '$11.00',
+    time: '10:00AM',
+    monthDate: 'July 25, 2022',
+    onPress: () => {},
+  },
+  {
+    id: 4,
+    PlaceName: 'Mall Parking',
+    price: '$11.00',
+    time: '10:00AM',
+    monthDate: 'July 25, 2022',
+    onPress: () => {},
+  },
+  {
+    id: 5,
+    PlaceName: 'Washington Main DC, USA',
+    price: '$11.00',
+    time: '10:00AM',
+    monthDate: 'July 25, 2022',
+    onPress: () => {},
+  },
+  {
+    id: 6,
+    PlaceName: 'Washington Main DC, USA',
+    price: '$11.00',
+    time: '10:00AM',
+    monthDate: 'July 25, 2022',
+    onPress: () => {},
+  },
+];
+const Completed_List = [
+  {
+    id: 1,
+    numberText: '123423',
+    monthYear: 'July 25, 2022',
+    time: '10:00AM',
+    messageText:
+      'Hello, I’d like to raise a few questions regarding the app as I see some features aren’t working...',
+  },
+];
+const Pending_List = [
+  {
+    id: 1,
+    numberText: '123423',
+    monthYear: 'July 25, 2022',
+    time: '10:00AM',
+    messageText:
+      'Hello, I’d like to raise a few questions regarding the app as I see some features aren’t working...',
+  },
+  {
+    id: 2,
+    numberText: '123423',
+    monthYear: 'July 25, 2022',
+    time: '10:00AM',
+    messageText:
+      'Hello, I’d like to raise a few questions regarding the app as I see some features aren’t working...',
+  },
+];
 export {
   web_client_id,
   stripe_publishableKey,
@@ -208,4 +285,7 @@ export {
   guideLines,
   faq,
   chats,
+  History_List,
+  Completed_List,
+  Pending_List,
 };

@@ -2,6 +2,7 @@ import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import History from '../../screens/App/History/History';
+import HistoryDetail from '../../screens/App/History/History/HistoryDetail';
 
 const Stack = createNativeStackNavigator();
 
@@ -11,6 +12,7 @@ function HistoryStack(props) {
       initialRouteName="History"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="History" component={History} />
+      <Stack.Screen name="HistoryDetail" component={HistoryDetail} />
     </Stack.Navigator>
   );
 }

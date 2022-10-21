@@ -8,6 +8,7 @@ export const AppHeader = ({
   onBackPress,
   onRightPress,
   rightIcon = false,
+  leftIcon,
 }) => {
   return (
     <>
