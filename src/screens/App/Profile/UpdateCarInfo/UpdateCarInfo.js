@@ -24,6 +24,7 @@ import {
   AppInput,
   AppButton,
   AppLoader,
+  AppHeader,
   DropdownPicker,
   ImagePickerModal,
 } from '../../../../components';
@@ -129,6 +130,10 @@ const UpdateCarInfo = ({navigation}) => {
   return (
     <ImageBackground style={styles.rootContainer} source={appImages.app_bg}>
       <AppLoader loading={isLoading} />
+      <AppHeader
+        title="Car Information"
+        onBackPress={() => navigation.goBack()}
+      />
       <Formik
         innerRef={formikRef}
         initialValues={updateCarInfoFormFields}
@@ -148,8 +153,6 @@ const UpdateCarInfo = ({navigation}) => {
           <KeyboardAwareScrollView
             showsVerticalScrollIndicator={false}
             contentContainerStyle={styles.scrollViewStyle}>
-            <Spacer androidVal={WP('14')} iOSVal={WP('14')} />
-            <Text style={styles.passTxtStyle}>Tell us about{'\n'}your car</Text>
             <Spacer androidVal={WP('8')} iOSVal={WP('8')} />
             <DropdownPicker
               data={carBrands}
@@ -261,9 +264,9 @@ const UpdateCarInfo = ({navigation}) => {
               style={styles.checkoxRow}
               onPress={() => setIsChecked(!isChecked)}>
               <Icon
-                type={'antdesign'}
-                size={22}
-                name={isChecked ? 'checksquare' : 'checksquareo'}
+                type={'materialIcons'}
+                size={24}
+                name={isChecked ? 'check-box' : 'check-box-outline-blank'}
                 color={isChecked ? colors.p5 : colors.g2}
               />
               <Text style={styles.showTxtStyle}>Show in profile</Text>

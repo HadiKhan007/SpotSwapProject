@@ -24,6 +24,10 @@ const Walkthrough = ({navigation}) => {
         repeat={true}
         paused={pause}
         resizeMode="cover"
+        // selectedVideoTrack={{
+        //   type: 'resolution',
+        //   value: 1080,
+        // }}
         playInBackground={false}
         style={styles.videoStyle}
         source={appVideos.appIntro}

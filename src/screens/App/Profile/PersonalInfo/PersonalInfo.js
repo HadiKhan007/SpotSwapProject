@@ -90,85 +90,87 @@ const PersonalInfo = ({navigation}) => {
           handleChange,
           setFieldTouched,
         }) => (
-          <KeyboardAwareScrollView
-            contentContainerStyle={styles.scrollViewStyle}
-            showsVerticalScrollIndicator={false}>
-            <TouchableOpacity
-              activeOpacity={0.7}
-              style={styles.imageContainer}
-              onPress={() => setShowImgPicker(true)}>
-              <ImageBackground
-                source={personImage ? {uri: personImage?.path} : appImages.car}
-                style={styles.imgStyle}
-                blurRadius={10}
-                imageStyle={styles.imgRadiusStyle}>
-                <Icon
-                  type={'feather'}
-                  name={'edit-3'}
-                  size={18}
-                  color={colors.white}
-                />
-              </ImageBackground>
-            </TouchableOpacity>
-            <Spacer androidVal={WP('11')} iOSVal={WP('11')} />
-            <AppInput
-              renderErrorMessage
-              disableFullscreenUI
-              value={values.name}
-              blurOnSubmit={false}
-              touched={touched.name}
-              title="Enter your name"
-              errorMessage={errors.name}
-              placeholder="Enter your name"
-              placeholderTextColor={colors.g2}
-              onChangeText={handleChange('name')}
-              onBlur={() => setFieldTouched('name')}
-            />
-            <Spacer androidVal={WP('3')} iOSVal={WP('3')} />
-            <AppInput
-              renderErrorMessage
-              disableFullscreenUI
-              value={values.email}
-              blurOnSubmit={false}
-              touched={touched.email}
-              title="Enter your email"
-              errorMessage={errors.email}
-              keyboardType="email-address"
-              placeholder="Enter your email"
-              placeholderTextColor={colors.g2}
-              onChangeText={handleChange('email')}
-              onBlur={() => setFieldTouched('email')}
-            />
-            <Spacer androidVal={WP('3')} iOSVal={WP('3')} />
-            <AppInput
-              leftIcon
-              cca2={cca2}
-              countryInput
-              renderErrorMessage
-              disableFullscreenUI
-              blurOnSubmit={false}
-              autoCapitalize="none"
-              value={values.number}
-              touched={touched.number}
-              keyboardType={'phone-pad'}
-              title={'Enter phone number'}
-              placeholder={'000 0000 000'}
-              errorMessage={errors.number}
-              onChangeText={handleChange('number')}
-              onBlur={() => setFieldTouched('number')}
-              onSelect={val => {
-                setCountryValue(val);
-              }}
-              countryCode={countryCode}
-              country={country}
-              onPressCountryPicker={() => {
-                setshowCountryPicker(true);
-              }}
-              countryPicker={showCountryPicker}
-            />
-            <Spacer androidVal={WP('9')} iOSVal={WP('9')} />
-            <View style={styles.bottomView}>
-              <AppButton title="Update" onPress={() => handleSubmit()} />
+          <KeyboardAwareScrollView showsVerticalScrollIndicator={false}>
+            <View style={styles.contentContainerStyle}>
+              <TouchableOpacity
+                activeOpacity={0.7}
+                style={styles.imageContainer}
+                onPress={() => setShowImgPicker(true)}>
+                <ImageBackground
+                  source={
+                    personImage ? {uri: personImage?.path} : appImages.car
+                  }
+                  style={styles.imgStyle}
+                  blurRadius={10}
+                  imageStyle={styles.imgRadiusStyle}>
+                  <Icon
+                    type={'feather'}
+                    name={'edit-3'}
+                    size={18}
+                    color={colors.white}
+                  />
+                </ImageBackground>
+              </TouchableOpacity>
+              <Spacer androidVal={WP('11')} iOSVal={WP('11')} />
+              <AppInput
+                renderErrorMessage
+                disableFullscreenUI
+                value={values.name}
+                blurOnSubmit={false}
+                touched={touched.name}
+                title="Enter your name"
+                errorMessage={errors.name}
+                placeholder="Enter your name"
+                placeholderTextColor={colors.g2}
+                onChangeText={handleChange('name')}
+                onBlur={() => setFieldTouched('name')}
+              />
+              <Spacer androidVal={WP('3')} iOSVal={WP('3')} />
+              <AppInput
+                renderErrorMessage
+                disableFullscreenUI
+                value={values.email}
+                blurOnSubmit={false}
+                touched={touched.email}
+                title="Enter your email"
+                errorMessage={errors.email}
+                keyboardType="email-address"
+                placeholder="Enter your email"
+                placeholderTextColor={colors.g2}
+                onChangeText={handleChange('email')}
+                onBlur={() => setFieldTouched('email')}
+              />
+              <Spacer androidVal={WP('3')} iOSVal={WP('3')} />
+              <AppInput
+                leftIcon
+                cca2={cca2}
+                countryInput
+                renderErrorMessage
+                disableFullscreenUI
+                blurOnSubmit={false}
+                autoCapitalize="none"
+                value={values.number}
+                touched={touched.number}
+                keyboardType={'phone-pad'}
+                title={'Enter phone number'}
+                placeholder={'000 0000 000'}
+                errorMessage={errors.number}
+                onChangeText={handleChange('number')}
+                onBlur={() => setFieldTouched('number')}
+                onSelect={val => {
+                  setCountryValue(val);
+                }}
+                countryCode={countryCode}
+                country={country}
+                onPressCountryPicker={() => {
+                  setshowCountryPicker(true);
+                }}
+                countryPicker={showCountryPicker}
+              />
+              <Spacer androidVal={WP('9')} iOSVal={WP('9')} />
+              <View style={styles.bottomView}>
+                <AppButton title="Update" onPress={() => handleSubmit()} />
+              </View>
             </View>
           </KeyboardAwareScrollView>
         )}

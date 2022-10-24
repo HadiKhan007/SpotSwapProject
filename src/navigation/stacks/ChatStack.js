@@ -9,7 +9,7 @@ function ChatStack(props) {
   return (
     <Stack.Navigator
       initialRouteName="Chat"
-      screenOptions={{headerShown: false}}>
+      screenOptions={{headerShown: false, animation: 'slide_from_right'}}>
       <Stack.Screen name="Chat" component={Chat} />
     </Stack.Navigator>
   );
