@@ -73,6 +73,7 @@ const Register = ({navigation}) => {
 
   const handleGoogleLogin = async () => {
     try {
+      await GoogleSignin.signOut();
       setIsLoading(true);
       // Get the users ID token
       const {idToken} = await GoogleSignin.signIn();

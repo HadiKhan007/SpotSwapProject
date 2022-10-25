@@ -31,6 +31,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: WP('1'),
   },
+  iconStyle: {
+    width: WP('7'),
+    height: WP('7'),
+  },
   showTxtStyle: {
     left: WP('2'),
     color: colors.white,

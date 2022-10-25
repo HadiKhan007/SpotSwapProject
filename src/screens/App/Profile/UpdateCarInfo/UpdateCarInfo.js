@@ -17,6 +17,7 @@ import {
   appImages,
   updateCarInfoVS,
   updateCarInfoFormFields,
+  appIcons,
 } from '../../../../shared/exporter';
 import {
   Spacer,
@@ -24,6 +25,7 @@ import {
   AppInput,
   AppButton,
   AppLoader,
+  AppHeader,
   DropdownPicker,
   ImagePickerModal,
 } from '../../../../components';
@@ -129,6 +131,10 @@ const UpdateCarInfo = ({navigation}) => {
   return (
     <ImageBackground style={styles.rootContainer} source={appImages.app_bg}>
       <AppLoader loading={isLoading} />
+      <AppHeader
+        title="Car Information"
+        onBackPress={() => navigation.goBack()}
+      />
       <Formik
         innerRef={formikRef}
         initialValues={updateCarInfoFormFields}
@@ -148,8 +154,6 @@ const UpdateCarInfo = ({navigation}) => {
           <KeyboardAwareScrollView
             showsVerticalScrollIndicator={false}
             contentContainerStyle={styles.scrollViewStyle}>
-            <Spacer androidVal={WP('14')} iOSVal={WP('14')} />
-            <Text style={styles.passTxtStyle}>Tell us about{'\n'}your car</Text>
             <Spacer androidVal={WP('8')} iOSVal={WP('8')} />
             <DropdownPicker
               data={carBrands}
@@ -260,11 +264,10 @@ const UpdateCarInfo = ({navigation}) => {
               activeOpacity={0.7}
               style={styles.checkoxRow}
               onPress={() => setIsChecked(!isChecked)}>
-              <Icon
-                type={'antdesign'}
-                size={22}
-                name={isChecked ? 'checksquare' : 'checksquareo'}
-                color={isChecked ? colors.p5 : colors.g2}
+              <Image
+                resizeMode="contain"
+                source={isChecked ? appIcons.checked : appIcons.unChecked}
+                style={styles.iconStyle}
               />
               <Text style={styles.showTxtStyle}>Show in profile</Text>
             </TouchableOpacity>
