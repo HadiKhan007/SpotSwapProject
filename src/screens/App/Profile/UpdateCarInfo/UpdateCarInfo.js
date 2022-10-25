@@ -17,6 +17,7 @@ import {
   appImages,
   updateCarInfoVS,
   updateCarInfoFormFields,
+  appIcons,
 } from '../../../../shared/exporter';
 import {
   Spacer,
@@ -263,11 +264,10 @@ const UpdateCarInfo = ({navigation}) => {
               activeOpacity={0.7}
               style={styles.checkoxRow}
               onPress={() => setIsChecked(!isChecked)}>
-              <Icon
-                type={'materialIcons'}
-                size={24}
-                name={isChecked ? 'check-box' : 'check-box-outline-blank'}
-                color={isChecked ? colors.p5 : colors.g2}
+              <Image
+                resizeMode="contain"
+                source={isChecked ? appIcons.checked : appIcons.unChecked}
+                style={styles.iconStyle}
               />
               <Text style={styles.showTxtStyle}>Show in profile</Text>
             </TouchableOpacity>
