@@ -1,7 +1,8 @@
 import React from 'react';
 import {Text, View, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {Icon} from 'react-native-elements';
 import Modal from 'react-native-modal';
-import {colors, WP, appIcons, family, size} from '../../shared/exporter';
+import {WP, size, family, colors, appIcons} from '../../shared/exporter';
 
 export const ImagePickerModal = ({
   show,
@@ -12,6 +13,19 @@ export const ImagePickerModal = ({
   return (
     <Modal onBackdropPress={onPressHide} isVisible={show}>
       <View style={styles.modalContainer}>
+        <View style={styles.iconContainer}>
+          <Text />
+          <Text />
+          <Text style={styles.headingText}>Take Image</Text>
+          <Icon
+            type={'entypo'}
+            name={'cross'}
+            size={22}
+            color={colors.g2}
+            style={styles.iconStyle}
+            onPress={() => onPressHide()}
+          />
+        </View>
         <TouchableOpacity onPress={onPressCamera} style={styles.btn}>
           <View style={styles.leftContainer}>
             <Image source={appIcons.cameraIcon} style={styles.imageStyle} />
@@ -42,6 +56,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
+  },
+  iconContainer: {
+    width: '100%',
+    margin: WP('3'),
+    marginBottom: 0,
+    flexDirection: 'row',
+    paddingHorizontal: WP('3'),
+    justifyContent: 'space-between',
+  },
+  headingText: {
+    right: 10,
+    color: colors.b1,
+    fontSize: size.normal,
+    fontFamily: family.SFProText_SemiBold,
   },
   separator: {
     width: '100%',

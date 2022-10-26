@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {DarkTheme, NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Splash from '../screens/Splash';
@@ -11,10 +11,14 @@ const AppStack = createNativeStackNavigator();
 
 const MainAppNav = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      theme={{
+        DarkTheme,
+        colors: {background: '#000'},
+      }}>
       <AppStack.Navigator
         initialRouteName="Splash"
-        screenOptions={{headerShown: false}}>
+        screenOptions={{headerShown: false, animation: 'slide_from_right'}}>
         <AppStack.Screen name={'Splash'} component={Splash} />
         <AppStack.Screen name={'Walkthrough'} component={Walkthrough} />
         <AppStack.Screen name={'Auth'} component={AuthStack} />

@@ -10,7 +10,7 @@ function HistoryStack(props) {
   return (
     <Stack.Navigator
       initialRouteName="History"
-      screenOptions={{headerShown: false}}>
+      screenOptions={{headerShown: false, animation: 'slide_from_right'}}>
       <Stack.Screen name="History" component={History} />
       <Stack.Screen name="HistoryDetail" component={HistoryDetail} />
     </Stack.Navigator>

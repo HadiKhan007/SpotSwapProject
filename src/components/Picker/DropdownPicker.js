@@ -7,6 +7,7 @@ import {
   size,
   colors,
   family,
+  StatusBarHeight,
   platformOrientedCode,
 } from '../../shared/exporter';
 
@@ -74,11 +75,11 @@ const styles = StyleSheet.create({
     height: platformOrientedCode(55, 55),
   },
   dropdownStyle: {
-    marginTop: -10,
     borderWidth: 1,
     borderColor: colors.g3,
     borderBottomEndRadius: 10,
     borderBottomStartRadius: 10,
+    marginTop: -StatusBarHeight + -10,
   },
   pickerBtnTxtStyle: {
     width: '10%',

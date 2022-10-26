@@ -2,6 +2,7 @@ import {StyleSheet} from 'react-native';
 import {
   WP,
   colors,
+  scrHeight,
   StatusBarHeight,
   platformOrientedCode,
 } from '../../../../shared/exporter';
@@ -13,8 +14,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: WP('5'),
     paddingTop: StatusBarHeight,
   },
-  scrollViewStyle: {
-    flexGrow: 1,
+  contentContainerStyle: {
+    height: scrHeight / 1.06,
   },
   imageContainer: {
     width: WP('35'),

@@ -53,6 +53,8 @@ export const appIcons = {
   arrowUp: require('../../assets/icons/ArrowUp.png'),
   arrowDown: require('../../assets/icons/Arrow_Down.png'),
   chatBlock: require('../../assets/icons/blockIcon.png'),
+  checked: require('../../assets/icons/checked.png'),
+  unChecked: require('../../assets/icons/unchecked.png'),
 };
 
 export const appSvgs = {

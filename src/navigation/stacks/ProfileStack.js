@@ -31,7 +31,7 @@ function ProfileStack(props) {
   return (
     <Stack.Navigator
       initialRouteName="Profile"
-      screenOptions={{headerShown: false}}>
+      screenOptions={{headerShown: false, animation: 'slide_from_right'}}>
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Settings" component={Settings} />
       <Stack.Screen name="FAQs" component={FAQs} />
