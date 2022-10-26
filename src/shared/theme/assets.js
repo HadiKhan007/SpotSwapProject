@@ -2,6 +2,9 @@ import {svgIcons} from '../../assets/svgs/index';
 
 export const appLogos = {
   appLogo: require('../../assets/logos/app_logo.png'),
+  visaLogo: require('../../assets/logos/visa-logo.png'),
+  masterCardLogo: require('../../assets/logos/Mastercard.png'),
+  cardLogo: require('../../assets/logos/credit-card.png'),
 };
 
 export const appVideos = {
@@ -12,6 +15,8 @@ export const appImages = {
   car: require('../../assets/images/car.png'),
   app_bg: require('../../assets/images/app_bg.png'),
   splash_bg: require('../../assets/images/splash_bg.png'),
+  wallet_bg: require('../../assets/images/wallet_bg.png'),
+  david: require('../../assets/images/David.png'),
 };
 
 export const appIcons = {
@@ -39,9 +44,15 @@ export const appIcons = {
   delIcon: require('../../assets/icons/del_icon.png'),
   editIcon: require('../../assets/icons/edit_icon.png'),
   gallery: require('../../assets/icons/gallery.png'),
-  sendbutton: require('../../assets/icons/sendbtn.png'),
-
-
+  sendbutton: require('../../assets/icons/send_btn.png'),
+  addCard: require('../../assets/icons/add_icon.png'),
+  VisaIcon: require('../../assets/icons/Visa.png'),
+  PayPalIcon: require('../../assets/icons/PayPal.png'),
+  checkIcon: require('../../assets/icons/Check.png'),
+  unCheckIcon: require('../../assets/icons/unCheck.png'),
+  arrowUp: require('../../assets/icons/ArrowUp.png'),
+  arrowDown: require('../../assets/icons/Arrow_Down.png'),
+  chatBlock: require('../../assets/icons/blockIcon.png'),
 };
 
 export const appSvgs = {

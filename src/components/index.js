@@ -18,6 +18,7 @@ export * from './Inputs/ChatInput';
 //Modals
 export * from './Modal/AppModal';
 export * from './Modal/ImagePickerModal';
+export * from './Modal/DeleteModal';
 
 //TextFields
 export * from './TextFields/ProfileField';
@@ -33,3 +34,7 @@ export * from './Hooks/useChannel';
 
 export * from './AppCard/AppCard';
 export * from './AppCard/HistoryCard';
+export * from './AppCard/PaymentCard';
+export * from './AppCard/PaymentMethodCard';
+export * from './AppCard/TransactionsCard';
+export * from './AppCard/ChatCard';

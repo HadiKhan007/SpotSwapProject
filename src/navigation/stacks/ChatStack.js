@@ -2,6 +2,7 @@ import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Chat from '../../screens/App/Chat/Chat';
+import Inbox from '../../screens/App/Chat/Inbox';
 
 const Stack = createNativeStackNavigator();
 
@@ -11,6 +12,7 @@ function ChatStack(props) {
       initialRouteName="Chat"
       screenOptions={{headerShown: false}}>
       <Stack.Screen name="Chat" component={Chat} />
+      <Stack.Screen name="Inbox" component={Inbox} />
     </Stack.Navigator>
   );
 }

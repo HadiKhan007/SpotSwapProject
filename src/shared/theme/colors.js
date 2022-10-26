@@ -8,6 +8,7 @@ export const colors = {
   p6: '#228AE2',
   p7: '#1E96FC',
   p8: '#1D98FF',
+  p9: '#127FDB',
 
   // Secondary Color
   s1: '#FA515B',
@@ -15,6 +16,7 @@ export const colors = {
   s3: '#4A7072',
   s4: '#13AE93',
   s5: '#EE3725',
+  s6: '#16DA4D',
 
   // Black Color
   b1: '#000000',
@@ -32,12 +34,17 @@ export const colors = {
   g7: '#636363',
   g8: '#4C657A',
   g9: '##C6C6C6',
+  g10: '#C6C7C9',
+  g11: '#818181',
 
   //White colors
   white: '#ffffff',
   w1: '#ffffff80',
   w2: '#E3E3E350',
 
+  //Yellow colors
+
+  y1: '#E58200',
   // rgba colors
   t1: 'rgba(255, 255, 255, 0.2)',
   t2: 'rgba(255, 255, 255, 0.05)',
@@ -48,4 +55,6 @@ export const colors = {
   s_gradient: ['#FA515B', '#DE2B36'],
   b_gradient: ['#1E96FC', '#0070CF'],
   g_gradient: ['#A39A92', '#6D6259'],
+  r_gradient: ['#FF0C3E', '#C6052D'],
+  btn_gradient: ['#1586E6', '#086CC280'],
 };

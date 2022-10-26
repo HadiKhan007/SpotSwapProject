@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
 
   tabsContainer: {
     borderWidth: 2,
-    marginTop: WP('5'),
     flexDirection: 'row',
     alignItems: 'center',
     borderColor: colors.s3,

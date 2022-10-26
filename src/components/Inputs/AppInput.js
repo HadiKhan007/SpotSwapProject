@@ -43,6 +43,7 @@ const AppInput = ({
   onPressCountryPicker,
   secureTextEntry = false,
   phTextColor = colors.g2,
+  maxLength,
 }) => {
   const [showPass, setShowPass] = React.useState(secureTextEntry);
 
@@ -97,6 +98,7 @@ const AppInput = ({
           renderErrorMessage={renderErrorMessage}
           disableFullscreenUI={disableFullscreenUI}
           style={styles.inputStyle(leftIcon, rightIcon)}
+          maxLength={maxLength}
         />
         {rightIcon && (
           <View style={styles.iconContainer}>

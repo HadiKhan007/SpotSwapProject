@@ -55,6 +55,23 @@ export const updateCarInfoFormFields = {
 export const quickChatFormFields = {
   chat: '',
 };
+export const ticketFormField = {
+  name: '',
+  discription: '',
+};
+
+export const cardFormField = {
+  number: '',
+  expiry: '',
+  cvv: '',
+  name: '',
+  address: '',
+  country: '',
+};
+
+export const payPalDetailFormField = {
+  email: '',
+};
 
 export const LoginVS = yup.object().shape({
   email: yup
@@ -157,4 +174,25 @@ export const personalInfoVS = yup.object().shape({
 
 export const quickChatVS = yup.object().shape({
   chat: yup.string().required('Quick Chat Required').label('chat'),
+});
+
+export const ticketVs = yup.object().shape({
+  name: yup.string().required('Name Required'),
+  discription: yup.string().required('Message Required'),
+});
+
+export const cardDetailsVs = yup.object().shape({
+  number: yup.string().required('Card Number Required'),
+  expiry: yup.string().required('Expiry Date Required'),
+  cvv: yup.string().required('CVV Required'),
+  name: yup.string().required('Card Name Required'),
+  address: yup.string().required('Address Required'),
+  country: yup.string().required('Country Required'),
+});
+
+export const payPalDetailVs = yup.object().shape({
+  email: yup
+    .string()
+    .email('Please enter valid email')
+    .required('Email Required'),
 });

@@ -1,4 +1,4 @@
-import {appIcons} from '../theme/assets';
+import {appIcons, appImages} from '../theme/assets';
 
 const web_client_id =
   '396667718237-b5871eer19sabub7jg8qhneksq75d443.apps.googleusercontent.com';
@@ -59,7 +59,7 @@ const commonSettings = [
   },
   {
     id: 3,
-    screen: 'PaymentMethods',
+    screen: 'Payment',
     icon: appIcons.cardIcon,
     title: 'Payment Methods',
     iconStyle: {width: 29, height: 22},
@@ -275,6 +275,75 @@ const Pending_List = [
       'Hello, I’d like to raise a few questions regarding the app as I see some features aren’t working...',
   },
 ];
+const CardMethod = [
+  {
+    id: 1,
+    title: 'Credit Card',
+    selected: false,
+    route: 'AddCardDetail',
+  },
+  {
+    id: 2,
+    title: 'Paypal',
+    selected: false,
+    route: 'AddPaypalDetails',
+  },
+];
+const PaymentCardList = [
+  {
+    id: 1,
+    leftIcon: appIcons.VisaIcon,
+    titleText: '**** **** **** 4545',
+    subTitle: 'Expires 10/26',
+    route: 'EditCardDetails',
+  },
+  {
+    id: 2,
+    leftIcon: appIcons.PayPalIcon,
+    titleText: 'Lilac Macbeth',
+    subTitle: 'lilacmc@gmail.com',
+    route: 'EditCardDetails',
+  },
+];
+const TopUp_List = [
+  {
+    id: 1,
+    title: 'Top Up',
+    subTitle: 'Bank Transfer',
+    price: '+ $20.00',
+    leftIcon: appIcons.arrowUp,
+  },
+  {
+    id: 2,
+    title: 'Top Up',
+    subTitle: 'Bank Transfer',
+    price: '+ $20.00',
+    leftIcon: appIcons.arrowUp,
+  },
+  {
+    id: 3,
+    title: 'Payment',
+    subTitle: 'SpotSwap',
+    price: '+ $20.00',
+    leftIcon: appIcons.arrowDown,
+  },
+];
+const ChatCard_List = [
+  {
+    id: 1,
+    Iconimage: appImages.car,
+    Title: 'Ali',
+    subTitle: 'Thanks',
+    onPress: 'Inbox',
+  },
+  {
+    id: 2,
+    Iconimage: appImages.david,
+    Title: 'James Kenter',
+    subTitle: 'Thanks for the slot',
+    onPress: 'Inbox',
+  },
+];
 export {
   web_client_id,
   stripe_publishableKey,
@@ -288,4 +357,8 @@ export {
   History_List,
   Completed_List,
   Pending_List,
+  CardMethod,
+  PaymentCardList,
+  TopUp_List,
+  ChatCard_List,
 };

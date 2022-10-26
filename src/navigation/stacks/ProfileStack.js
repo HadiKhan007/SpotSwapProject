@@ -15,6 +15,15 @@ import Support from '../../screens/App/Profile/Support/Support/Support';
 import CreateTicket from '../../screens/App/Profile/Support/CreateTicket';
 import SentSuccess from '../../screens/App/Profile/Support/SentSuccess';
 import SupportChat from '../../screens/App/Profile/Support/SupportChat';
+import PaymentScreen from '../../screens/App/Profile/Payment/PaymentScreen';
+import AddPaymentMethod from '../../screens/App/Profile/Payment/AddPaymentMethod';
+import AddCardDetails from '../../screens/App/Profile/Payment/AddCardDetails';
+import CardAddedSuccessfully from '../../screens/App/Profile/Payment/CardAddedSuccessfully';
+import PaymentSuccessful from '../../screens/App/Profile/Payment/PaymentSuccessful';
+import AddPaypalDetails from '../../screens/App/Profile/Payment/AddPaypalDetails/AddPaypalDetails';
+import PaypalAddedSuccessfully from '../../screens/App/Profile/Payment/PaypalAddedSuccessfully';
+import EditCardDetails from '../../screens/App/Profile/Payment/EditCardDetails';
+import BlockList from '../../screens/App/Profile/BlockList';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,10 +42,25 @@ function ProfileStack(props) {
       <Stack.Screen name="EditQuickChat" component={EditQuickChat} />
       <Stack.Screen name="PrivacyPolicy" component={PrivacyPolicy} />
       <Stack.Screen name="TermsConditions" component={TermsConditions} />
+      <Stack.Screen name="BlockList" component={BlockList} />
       <Stack.Screen name="Support" component={Support} />
       <Stack.Screen name="CreateTicket" component={CreateTicket} />
       <Stack.Screen name="SentSuccess" component={SentSuccess} />
       <Stack.Screen name="SupportChat" component={SupportChat} />
+      <Stack.Screen name="Payment" component={PaymentScreen} />
+      <Stack.Screen name="AddPaymentMethod" component={AddPaymentMethod} />
+      <Stack.Screen name="AddCardDetail" component={AddCardDetails} />
+      <Stack.Screen
+        name="CardAddSuccessfully"
+        component={CardAddedSuccessfully}
+      />
+      <Stack.Screen name="PaymentSuccessful" component={PaymentSuccessful} />
+      <Stack.Screen name="AddPaypalDetails" component={AddPaypalDetails} />
+      <Stack.Screen
+        name="PaypalAddedSuccessfully"
+        component={PaypalAddedSuccessfully}
+      />
+      <Stack.Screen name="EditCardDetails" component={EditCardDetails} />
     </Stack.Navigator>
   );
 }

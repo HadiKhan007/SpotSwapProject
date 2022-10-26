@@ -49,6 +49,18 @@ const styles = StyleSheet.create({
   keyBoardStyle: {
     marginBottom: WP('20'),
   },
+  errorText: {
+    top: WP('1'),
+    color: colors.s1,
+    fontSize: size.tiny,
+    fontFamily: family.SFProText_Regular,
+  },
+  msgText: {
+    color: colors.g2,
+    fontSize: size.tiny,
+    paddingBottom: WP('2.5'),
+    fontFamily: family.SFProText_Regular,
+  },
 });
 
 export default styles;

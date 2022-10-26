@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     paddingBottom: WP('1.5'),
     paddingHorizontal: WP('4'),
   },
-  itemContainer: {
+itemContainer: {
     height: 51,
     borderRadius: 10,
     flexDirection: 'row',

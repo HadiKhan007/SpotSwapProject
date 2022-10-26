@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, ImageBackground, Text, TouchableOpacity} from 'react-native';
-import {appImages} from '../../../../../shared/exporter';
-import {AppButton, AppHeader} from '../../../../../components';
+import {appImages, WP} from '../../../../../shared/exporter';
+import {AppButton, AppHeader, Spacer} from '../../../../../components';
 import styles from './styles';
 import Pending from './Pending';
 import Completed from './Completed';
@@ -12,6 +12,8 @@ const Support = ({navigation}) => {
   return (
     <ImageBackground style={styles.rootContainer} source={appImages.app_bg}>
       <AppHeader title="Support" onBackPress={() => navigation.goBack()} />
+      <Spacer androidVal={WP('7')} iOSVal={WP('7')} />
+
       <View style={styles.tabsContainer}>
         <TouchableOpacity
           activeOpacity={0.7}

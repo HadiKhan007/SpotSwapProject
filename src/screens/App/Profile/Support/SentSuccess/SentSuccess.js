@@ -9,11 +9,7 @@ const SentSuccess = ({navigation}) => {
     <ImageBackground style={styles.rootContainer} source={appImages.app_bg}>
       <AppHeader title="Support" onBackPress={() => navigation.goBack()} />
       <View style={styles.mainContainer}>
-        <Text
-          style={styles.titleText}
-          onPress={() => navigation.navigate('SupportChat')}>
-          Sent Successfully
-        </Text>
+        <Text style={styles.titleText}>Sent Successfully</Text>
         <Text style={styles.text} onPress={() => navigation.goBack()}>
           Go back
         </Text>

@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   titleTxtStyle: {
     color: colors.white,
     fontSize: size.normal,
-    fontFamily: family.SFProText_SemiBold,
+    fontFamily: family.SFProText_Regular,
   },
   rowStyle: {
     marginTop: WP('5.5'),
@@ -51,9 +51,9 @@ const styles = StyleSheet.create({
     fontFamily: family.SFProText_SemiBold,
   },
   ImgStyle: {
-    width: WP('15'),
-    height: WP('15'),
-    borderRadius: WP('7.5'),
+    width: WP('10'),
+    height: WP('10'),
+    borderRadius: WP('5'),
     resizeMode: 'contain',
     marginTop: WP('3'),
     marginRight: WP('4'),
@@ -63,22 +63,24 @@ const styles = StyleSheet.create({
   },
   innerView: {
     paddingVertical: WP('5'),
+    width: WP('46'),
   },
   btn: {
     width: '25%',
-    height: '30%',
+    height: '25%',
     backgroundColor: colors.p5,
     borderRadius: 100,
     marginTop: WP('5'),
-    marginHorizontal: WP('4'),
+    marginLeft: WP('2'),
+    alignItems: 'center',
   },
   btnText: {
     color: colors.b4,
     textAlign: 'center',
     fontSize: size.tiny,
-    fontFamily: family.SFProText_Medium,
-    fontWeight: '600',
-    lineHeight: 27,
+    fontFamily: family.SFProText_Light,
+    fontWeight: '400',
+    lineHeight: 22,
   },
   bottomText: {
     color: colors.w1,

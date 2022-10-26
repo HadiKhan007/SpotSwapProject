@@ -9,13 +9,20 @@ import {
   WP,
 } from '../../shared/exporter';
 
-const AppButton = ({title, onPress, width = WP('60'), height = WP('14')}) => {
+const AppButton = ({
+  title,
+  onPress,
+  width = WP('60'),
+  height = WP('14'),
+  titleTxtStyle,
+  bgColor,
+}) => {
   return (
     <TouchableOpacity activeOpacity={0.7} onPress={onPress}>
       <LinearGradient
-        colors={colors.b_gradient}
+        colors={bgColor ? bgColor : colors.b_gradient}
         style={styles.buttonContainer(width, height)}>
-        <Text style={styles.btnTxtStyle}>{title}</Text>
+        <Text style={[styles.btnTxtStyle, {...titleTxtStyle}]}>{title}</Text>
       </LinearGradient>
     </TouchableOpacity>
   );
