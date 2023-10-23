@@ -62,7 +62,7 @@ const profileReducer = (state = initialState, actions) => {
         carInfo: null,
       };
     case TYPES.UPADTE_CAR_INFO_REQUEST_SUCCESS:
-      return {
+      return { 
         ...state,
         loading: false,
         isSuccess: true,

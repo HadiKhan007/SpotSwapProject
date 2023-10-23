@@ -25,6 +25,7 @@ import {
   appLogos,
   appImages,
   loginFormFields,
+  registerVS,
 } from '../../../shared/exporter';
 import {Spacer, AppInput, AppButton, AppLoader} from '../../../components';
 import styles from './styles';
@@ -170,7 +171,7 @@ const Login = ({navigation}) => {
         onSubmit={values => {
           handleLogin(values);
         }}
-        validationSchema={LoginVS}>
+        validationSchema={registerVS}>
         {({
           values,
           errors,
